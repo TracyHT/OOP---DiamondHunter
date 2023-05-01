@@ -1,7 +1,9 @@
 # DiamondHunter
-git pull để update latest source trên branch về local
+git pull để update latest source trên branch về local.
+
 Flow: https://docs.github.com/en/get-started/quickstart/github-flow
 https://www.freecodecamp.org/news/how-to-use-git-and-github-in-a-team-like-a-pro/ 
+
 
 Khó quá thì tải github desktop cho dễ xem
 NOTE: Commit to github

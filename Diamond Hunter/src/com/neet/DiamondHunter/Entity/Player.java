@@ -49,8 +49,8 @@ public class Player extends Entity {
 		
 		width = 16;
 		height = 16;
-		cwidth = 14;
-		cheight = 14;
+		cwidth = 12;
+		cheight = 12;
 		
 		moveSpeed = 2;
 		

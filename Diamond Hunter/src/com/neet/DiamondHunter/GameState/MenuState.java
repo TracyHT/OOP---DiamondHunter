@@ -49,13 +49,21 @@ public class MenuState extends GameState {
 	}
 	
 	public void handleInput() {
-		if(Keys.isPressed(Keys.DOWN) && currentOption < options.length - 1) {
+		if((Keys.isPressed(Keys.DOWN) || Keys.isPressed(Keys.S)) && currentOption < options.length - 1) {
 			JukeBox.play("menuoption");
 			currentOption++;
 		}
-		if(Keys.isPressed(Keys.UP) && currentOption > 0) {
+		else if((Keys.isPressed(Keys.DOWN) || Keys.isPressed(Keys.S)) && currentOption > 0){
 			JukeBox.play("menuoption");
 			currentOption--;
+		}
+		if((Keys.isPressed(Keys.UP) || Keys.isPressed(Keys.W)) && currentOption > 0) {
+			JukeBox.play("menuoption");
+			currentOption--;
+		}
+		else if((Keys.isPressed(Keys.UP) || Keys.isPressed(Keys.W)) && currentOption < options.length - 1){
+			JukeBox.play("menuoption");
+			currentOption++;
 		}
 		if(Keys.isPressed(Keys.ENTER)) {
 			JukeBox.play("collect");

@@ -107,11 +107,11 @@ public class TileMap {
 			height = numRows * tileSize;
 			
 			xmin = GamePanel.WIDTH - width;
-			xmin = -width;
-			xmax = 0;
+			xmin = -width +32;
+			xmax = -32;
 			ymin = GamePanel.HEIGHT - height;
-			ymin = -height;
-			ymax = 0;
+			ymin = -height + 32;
+			ymax = -32;
 			
 			String delims = "\\s+";
 			for(int row = 0; row < numRows; row++) {

@@ -84,8 +84,8 @@ public class PlayState extends GameState {
 		
 		// set up camera position
 		sectorSize = GamePanel.WIDTH;
-		xsector = player.getx() / sectorSize;
-		ysector = player.gety() / sectorSize;
+		xsector = (player.getx()) / sectorSize;
+		ysector = (player.gety()) / sectorSize;
 		tileMap.setPositionImmediately(-xsector * sectorSize, -ysector * sectorSize);
 		
 		// load hud
@@ -202,8 +202,8 @@ public class PlayState extends GameState {
 		// update camera
 		int oldxs = xsector;
 		int oldys = ysector;
-		xsector = player.getx() / sectorSize;
-		ysector = player.gety() / sectorSize;
+		xsector = (player.getx()) / sectorSize;
+		ysector = (player.gety()) / sectorSize;
 		tileMap.setPosition(-xsector * sectorSize, -ysector * sectorSize);
 		tileMap.update();
 		

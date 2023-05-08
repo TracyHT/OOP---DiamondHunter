@@ -79,11 +79,11 @@ public class PlayState extends GameState {
 		populateItems();
 		
 		// initialize player
-		player.setTilePosition(17, 17);
+		player.setTilePosition(13, 14);
 		player.setTotalDiamonds(diamonds.size());
 		
 		// set up camera position
-		sectorSize = GamePanel.WIDTH;
+		sectorSize = GamePanel.HEIGHT - 32;
 		xsector = (player.getx()) / sectorSize;
 		ysector = (player.gety()) / sectorSize;
 		tileMap.setPositionImmediately(-xsector * sectorSize, -ysector * sectorSize);
@@ -176,7 +176,7 @@ public class PlayState extends GameState {
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
+		item.setTilePosition(3, 22);
 		items.add(item);
 		
 		item = new Item(tileMap);

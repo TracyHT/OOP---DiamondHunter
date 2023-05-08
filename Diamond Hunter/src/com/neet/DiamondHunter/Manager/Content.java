@@ -15,6 +15,8 @@ public class Content {
 	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
 	
 	public static BufferedImage[][] PLAYER = load("/Sprites/playersprites.png", 16, 16);
+	public static BufferedImage[][] MONSTER = load("/Sprites/Monster.png", 16, 16);
+	public static BufferedImage[][] BOSS = load("/Sprites/Boss.png", 40, 40);
 	public static BufferedImage[][] DIAMOND = load("/Sprites/diamond.gif", 16, 16);
 	public static BufferedImage[][] SPARKLE = load("/Sprites/sparkle.gif", 16, 16);
 	public static BufferedImage[][] ITEMS = load("/Sprites/items.gif", 16, 16);

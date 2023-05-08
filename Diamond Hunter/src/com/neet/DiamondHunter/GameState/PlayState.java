@@ -13,6 +13,7 @@ import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Item;
 import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Entity.Sparkle;
+import com.neet.DiamondHunter.Entity.Monster;
 import com.neet.DiamondHunter.HUD.Hud;
 import com.neet.DiamondHunter.Main.GamePanel;
 import com.neet.DiamondHunter.Manager.Data;
@@ -37,6 +38,9 @@ public class PlayState extends GameState {
 	
 	// sparkles
 	private ArrayList<Sparkle> sparkles;
+
+	// monster
+	private ArrayList<Monster> monster;
 	
 	// camera position
 	private int xsector;
@@ -65,6 +69,7 @@ public class PlayState extends GameState {
 		diamonds = new ArrayList<Diamond>();
 		sparkles = new ArrayList<Sparkle>();
 		items = new ArrayList<Item>();
+		monster = new ArrayList<Monster>();
 		
 		// load map
 		tileMap = new TileMap(16);
@@ -75,6 +80,7 @@ public class PlayState extends GameState {
 		player = new Player(tileMap);
 		
 		// fill lists
+		populateMonster();
 		populateDiamonds();
 		populateItems();
 		
@@ -109,6 +115,20 @@ public class PlayState extends GameState {
 		eventStart = true;
 		eventStart();
 			
+	}
+	private void populateMonster(){
+
+		Monster m;
+		m = new Monster(tileMap);
+		m.setType(Monster.SMALL);
+		m.setTilePosition(11, 20);
+		monster.add(m);
+		
+		m = new Monster(tileMap);
+		m.setType(Monster.BOSS);
+		m.setTilePosition(11, 18);
+		monster.add(m);
+
 	}
 	
 	private void populateDiamonds() {
@@ -173,11 +193,12 @@ public class PlayState extends GameState {
 	private void populateItems() {
 		
 		Item item;
-		
+
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
 		item.setTilePosition(3, 22);
 		items.add(item);
+		
 		
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
@@ -275,6 +296,12 @@ public class PlayState extends GameState {
 				sparkles.add(s);
 			}
 		}
+
+		//update monster
+		for(int i = 0; i < monster.size(); i++) {
+			Monster m = monster.get(i);
+			m.update();
+		}
 		
 	}
 	
@@ -298,6 +325,11 @@ public class PlayState extends GameState {
 		
 		// draw items
 		for(Item i : items) {
+			i.draw(g);
+		}
+
+		//draw Monster
+		for(Monster i : monster){
 			i.draw(g);
 		}
 		

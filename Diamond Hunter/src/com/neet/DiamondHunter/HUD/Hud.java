@@ -44,7 +44,6 @@ public class Hud {
 		boat = Content.ITEMS[0][0];
 		axe = Content.ITEMS[0][1];
 		
-
 		font = new Font("Arial", Font.PLAIN, 10);
 		textColor = new Color(47, 64, 126);
 		
@@ -88,10 +87,3 @@ public class Hud {
 		health.draw(g);
 		}
 }
-
-
-
-
-
-
-

@@ -78,10 +78,7 @@ public class Hud {
 		else {
 			if(seconds < 10) Content.drawString(g, minutes + ":0" + seconds, 85, 3);
 			else Content.drawString(g, minutes + ":" + seconds, 85, 3);
-		}
-		
-		
-		
+		}		
 	}
 	
 }

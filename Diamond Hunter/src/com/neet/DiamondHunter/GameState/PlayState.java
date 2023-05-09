@@ -326,6 +326,7 @@ public class PlayState extends GameState {
 		// draw items
 		for(Item i : items) {
 			i.draw(g);
+			i.setLeft();
 		}
 
 		//draw Monster

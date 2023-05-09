@@ -45,6 +45,9 @@ public abstract class Entity {
 	// animation
 	protected Animation animation;
 	protected int currentAnimation;
+
+	//action
+	protected int actionCounter = 0;
 	
 	public Entity(TileMap tm) {
 		tileMap = tm;

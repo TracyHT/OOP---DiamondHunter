@@ -23,8 +23,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	// dimensions
 	// HEIGHT is the playing area size
 	// HEIGHT2 includes the bottom window
-	public static final int WIDTH = 180;
-	public static final int HEIGHT = 180;
+	public static final int WIDTH = 160;
+	public static final int HEIGHT = 160;
 	public static final int HEIGHT2 = HEIGHT + 16;
 	public static final int SCALE = 3;
 	
@@ -78,7 +78,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			
 			elapsed = System.nanoTime() - start;
 			
-			wait = TARGET_TIME - elapsed / 1000000;
+			wait = TARGET_TIME - elapsed / 100;
 			if(wait < 0) wait = TARGET_TIME;
 			
 			try {

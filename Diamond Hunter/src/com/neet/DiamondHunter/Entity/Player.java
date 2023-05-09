@@ -102,6 +102,12 @@ public class Player extends Entity {
 	public void setUp() {
 		super.setUp();
 	}
+	public boolean getOnWater(){
+		return onWater;
+	}
+	public void setOnWater(boolean onWater){
+		this.onWater = onWater;
+	}
 	
 	// Keyboard input.
 	// If Player has axe, dead trees in front
@@ -187,5 +193,9 @@ public class Player extends Entity {
 	public void draw(Graphics2D g) {
 		super.draw(g);
 	}
+
+    public int getHealth() {
+        return 0;
+    }
 	
 }

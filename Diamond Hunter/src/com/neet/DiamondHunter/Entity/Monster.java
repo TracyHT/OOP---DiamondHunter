@@ -10,9 +10,9 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import com.neet.DiamondHunter.Manager.Content;
-import com.neet.DiamondHunter.Manager.Data;
+//import com.neet.DiamondHunter.Manager.Data;
 import com.neet.DiamondHunter.TileMap.TileMap;
-import java.util.Random;
+//import java.util.Random;
 
 public class Monster extends Entity {
 	
@@ -90,7 +90,7 @@ public class Monster extends Entity {
 	
 	public void update() {
 		animation.update();
-		move(setAction());
+		//move(setAction());
 	}
 	
 	public void draw(Graphics2D g) {

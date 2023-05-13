@@ -14,6 +14,7 @@ import com.neet.DiamondHunter.GameState.IntroState;
 import com.neet.DiamondHunter.GameState.MenuState;
 import com.neet.DiamondHunter.GameState.PauseState;
 import com.neet.DiamondHunter.GameState.PlayState;
+import com.neet.DiamondHunter.GameState.Round1;
 
 
 public class GameStateManager {
@@ -56,7 +57,7 @@ public class GameStateManager {
 			gameStates[i].init();
 		}
 		else if(i == PLAY) {
-			gameStates[i] = new PlayState(this);
+			gameStates[i] = new Round1(this);
 			gameStates[i].init();
 		}
 		else if(i == GAMEOVER) {

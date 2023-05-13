@@ -26,11 +26,13 @@ public class GameStateManager {
 	private int currentState;
 	private int previousState;
 	
-	public static final int NUM_STATES = 4;
+	public static final int NUM_STATES = 5;
 	public static final int INTRO = 0;
 	public static final int MENU = 1;
-	public static final int PLAY = 2;
-	public static final int GAMEOVER = 3;
+	public static final int GAMEOVER = 2;
+	public static final int ROUND1 = 3;
+	public static final int ROUND2 = 4;
+	
 	
 	public GameStateManager() {
 		
@@ -56,8 +58,12 @@ public class GameStateManager {
 			gameStates[i] = new MenuState(this);
 			gameStates[i].init();
 		}
-		else if(i == PLAY) {
+		else if(i == ROUND1) {
 			gameStates[i] = new Round1(this);
+			gameStates[i].init();
+		}
+		else if(i == ROUND2) {
+			gameStates[i] = new PlayState(this);
 			gameStates[i].init();
 		}
 		else if(i == GAMEOVER) {

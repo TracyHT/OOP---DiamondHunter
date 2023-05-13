@@ -20,6 +20,7 @@ public class Content {
 	public static BufferedImage[][] DIAMOND = load("/Sprites/diamond.gif", 16, 16);
 	public static BufferedImage[][] SPARKLE = load("/Sprites/sparkle.gif", 16, 16);
 	public static BufferedImage[][] ITEMS = load("/Sprites/items.gif", 16, 16);
+	public static BufferedImage[][] HEARTS = load("/Sprites/heart.png", 16, 16);
 	
 	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);
 	
@@ -58,6 +59,9 @@ public class Content {
 			int col = c % font[0].length;
 			g.drawImage(font[row][col], x + 8 * i, y, null);
 		}
+	}
+
+	public interface HEARTS {
 	}
 	
 }

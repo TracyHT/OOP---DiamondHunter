@@ -1,5 +1,6 @@
 package com.neet.DiamondHunter.GameState;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -40,12 +41,15 @@ public class CharacterChoosing extends GameState {
 
     @Override
     public void draw(Graphics2D g) {
-        g.drawRect(0, 0, 160, 176);
-        Content.drawString(g, "CHOOSE YOUR CHARACTER", 62, 90);
+        g.setColor(Color.RED);
+        g.fillRect(0, 0, 160, 176);
+        Content.drawString(g, "CHOOSE", 34, 10);
+        Content.drawString(g, "YOUR", 86, 10);
+        Content.drawString(g, "CHARACTER",42, 20);
         
         if (choosingCharacter) {
             g.drawImage(Content.PLAYER1[0][0], 120, 90, null);
-            g.drawImage(Content.PLAYER2[0][0], 160, 90, null);
+            g.drawImage(Content.PLAYER2[0][0], 60, 90, null);
             //g.drawImage(Sprites.diamond, 200, 90, null);
         } else {
             if (selectedCharacter == 0)

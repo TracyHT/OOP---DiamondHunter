@@ -59,17 +59,9 @@ public class MenuState extends GameState {
 			JukeBox.play("menuoption");
 			currentOption++;
 		}
-		else if((Keys.isPressed(Keys.DOWN) || Keys.isPressed(Keys.S)) && currentOption > 0){
+		else if((Keys.isPressed(Keys.UP) || Keys.isPressed(Keys.W)) && currentOption > 0) {
 			JukeBox.play("menuoption");
 			currentOption--;
-		}
-		if((Keys.isPressed(Keys.UP) || Keys.isPressed(Keys.W)) && currentOption > 0) {
-			JukeBox.play("menuoption");
-			currentOption--;
-		}
-		else if((Keys.isPressed(Keys.UP) || Keys.isPressed(Keys.W)) && currentOption < options.length - 1){
-			JukeBox.play("menuoption");
-			currentOption++;
 		}
 		if(Keys.isPressed(Keys.ENTER)) {
 			JukeBox.play("collect");
@@ -82,16 +74,15 @@ public class MenuState extends GameState {
             // "Start" option selected
             gsm.setState(GameStateManager.ROUND1);
         } else if (currentOption == 1) {
-            // "Options" option selected
+            // "Quit" option selected
             System.exit(0);
         } else if (currentOption == 2) {
             // "Character" option selected
             gsm.setState(GameStateManager.CHARACTER);
         } else if (currentOption == 3) {
             // "Guideline" option selected
-            //gsm.setState(GameStateManager.GUIDELINE);
+            gsm.setState(GameStateManager.GUIDELINE);
         }
     }
-
-	
 }
+

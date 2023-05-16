@@ -48,7 +48,7 @@ public class IntroState extends GameState {
 			alpha = (int) (255 * (1.0 * ticks - FADE_IN - LENGTH) / FADE_OUT);
 			if(alpha > 255) alpha = 255;
 		}
-		if(ticks > FADE_IN + LENGTH + FADE_OUT) {
+		if(ticks > 2/*FADE_IN + LENGTH + FADE_OUT*/) {
 			gsm.setState(GameStateManager.MENU);
 		}
 	}

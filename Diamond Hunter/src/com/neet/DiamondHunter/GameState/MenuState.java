@@ -19,7 +19,8 @@ public class MenuState extends GameState {
 	private String[] options = {
 		"START",
 		"QUIT",
-		"CHARACTER"
+		"CHARACTER",
+		"GUIDELINE",
 	};
 	
 	public MenuState(GameStateManager gsm) {
@@ -44,10 +45,12 @@ public class MenuState extends GameState {
 		Content.drawString(g, options[0], 62, 90);
 		Content.drawString(g, options[1], 66, 100);
 		Content.drawString(g, options[2], 44, 110);
+		Content.drawString(g, options[3], 44, 120);
 		
 		if(currentOption == 0) g.drawImage(diamond, 25, 86, null);
 		else if(currentOption == 1) g.drawImage(diamond, 25, 96, null);
 		else if (currentOption == 2) g.drawImage(diamond, 25, 106, null);
+		else if (currentOption == 3) g.drawImage(diamond, 25, 116, null);
 		
 	}
 	
@@ -75,12 +78,20 @@ public class MenuState extends GameState {
 	}
 	
 	private void selectOption() {
-		if(currentOption == 0) {
-			gsm.setState(GameStateManager.ROUND1);
-		}
-		if(currentOption == 1) {
-			System.exit(0);
-		}
-	}
+        if (currentOption == 0) {
+            // "Start" option selected
+            gsm.setState(GameStateManager.ROUND1);
+        } else if (currentOption == 1) {
+            // "Options" option selected
+            System.exit(0);
+        } else if (currentOption == 2) {
+            // "Character" option selected
+            gsm.setState(GameStateManager.CHARACTER);
+        } else if (currentOption == 3) {
+            // "Guideline" option selected
+            //gsm.setState(GameStateManager.GUIDELINE);
+        }
+    }
+
 	
 }

@@ -13,7 +13,7 @@ public class Content {
 	
 	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 176);
 	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
-	
+
 	public static BufferedImage[][] PLAYER = load("/Sprites/playersprites.png", 16, 16);
 	public static BufferedImage[][] MONSTER = load("/Sprites/Monster.png", 16, 16);
 	public static BufferedImage[][] BOSS = load("/Sprites/Boss.png", 40, 40);
@@ -23,7 +23,7 @@ public class Content {
 	public static BufferedImage[][] HEARTS = load("/Sprites/heart.png", 16, 16);
 	
 	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);
-	
+
 	public static BufferedImage[][] load(String s, int w, int h) {
 		BufferedImage[][] ret;
 		try {
@@ -31,37 +31,38 @@ public class Content {
 			int width = spritesheet.getWidth() / w;
 			int height = spritesheet.getHeight() / h;
 			ret = new BufferedImage[height][width];
-			for(int i = 0; i < height; i++) {
-				for(int j = 0; j < width; j++) {
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
 					ret[i][j] = spritesheet.getSubimage(j * w, i * h, w, h);
 				}
 			}
 			return ret;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Error loading graphics.");
 			System.exit(0);
 		}
 		return null;
 	}
-	
+
 	public static void drawString(Graphics2D g, String s, int x, int y) {
 		s = s.toUpperCase();
-		for(int i = 0; i < s.length(); i++) {
+		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			if(c == 47) c = 36; // slash
-			if(c == 58) c = 37; // colon
-			if(c == 32) c = 38; // space
-			if(c >= 65 && c <= 90) c -= 65; // letters
-			if(c >= 48 && c <= 57) c -= 22; // numbers
+			if (c == 47)
+				c = 36; // slash
+			if (c == 58)
+				c = 37; // colon
+			if (c == 32)
+				c = 38; // space
+			if (c >= 65 && c <= 90)
+				c -= 65; // letters
+			if (c >= 48 && c <= 57)
+				c -= 22; // numbers
 			int row = c / font[0].length;
 			int col = c % font[0].length;
 			g.drawImage(font[row][col], x + 8 * i, y, null);
 		}
 	}
 
-	public interface HEARTS {
-	}
-	
 }

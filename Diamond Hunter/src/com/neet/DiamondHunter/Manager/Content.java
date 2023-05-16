@@ -10,15 +10,27 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 public class Content {
+<<<<<<< HEAD
 
 	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 160);
+=======
+	
+	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 176);
+>>>>>>> main
 	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
 
 	public static BufferedImage[][] PLAYER = load("/Sprites/playersprites.png", 16, 16);
+	public static BufferedImage[][] MONSTER = load("/Sprites/Monster.png", 16, 16);
+	public static BufferedImage[][] BOSS = load("/Sprites/Boss.png", 40, 40);
 	public static BufferedImage[][] DIAMOND = load("/Sprites/diamond.gif", 16, 16);
 	public static BufferedImage[][] SPARKLE = load("/Sprites/sparkle.gif", 16, 16);
 	public static BufferedImage[][] ITEMS = load("/Sprites/items.gif", 16, 16);
+<<<<<<< HEAD
 
+=======
+	public static BufferedImage[][] HEARTS = load("/Sprites/heart.png", 16, 16);
+	
+>>>>>>> main
 	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);
 
 	public static BufferedImage[][] load(String s, int w, int h) {
@@ -62,4 +74,10 @@ public class Content {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	public interface HEARTS {
+	}
+	
+>>>>>>> main
 }

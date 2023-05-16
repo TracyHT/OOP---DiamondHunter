@@ -187,5 +187,9 @@ public class Player extends Entity {
 	public void draw(Graphics2D g) {
 		super.draw(g);
 	}
+
+    public int getHealth() {
+        return 0;
+    }
 	
 }

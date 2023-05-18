@@ -8,8 +8,10 @@ package com.neet.DiamondHunter.Manager;
 
 import java.awt.Graphics2D;
 
+import com.neet.DiamondHunter.GameState.CharacterChoosing;
 import com.neet.DiamondHunter.GameState.GameOverState;
 import com.neet.DiamondHunter.GameState.GameState;
+import com.neet.DiamondHunter.GameState.Guideline;
 import com.neet.DiamondHunter.GameState.IntroState;
 import com.neet.DiamondHunter.GameState.MenuState;
 import com.neet.DiamondHunter.GameState.PauseState;
@@ -26,12 +28,14 @@ public class GameStateManager {
 	private int currentState;
 	private int previousState;
 	
-	public static final int NUM_STATES = 5;
+	public static final int NUM_STATES = 8;
 	public static final int INTRO = 0;
 	public static final int MENU = 1;
 	public static final int GAMEOVER = 2;
 	public static final int ROUND1 = 3;
 	public static final int ROUND2 = 4;
+	public static final int CHARACTER = 6;
+	public static final int GUIDELINE = 7;
 	
 	
 	public GameStateManager() {
@@ -68,6 +72,14 @@ public class GameStateManager {
 		}
 		else if(i == GAMEOVER) {
 			gameStates[i] = new GameOverState(this);
+			gameStates[i].init();
+		}
+		else if(i == CHARACTER){
+			gameStates[i] = new CharacterChoosing(this);
+			gameStates[i].init();
+		}
+		else if(i == GUIDELINE){
+			gameStates[i] = new Guideline(this);
 			gameStates[i].init();
 		}
 	}

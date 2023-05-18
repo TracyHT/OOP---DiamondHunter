@@ -14,6 +14,7 @@ import com.neet.DiamondHunter.Entity.Item;
 import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Entity.Sparkle;
 import com.neet.DiamondHunter.Entity.Monster;
+import com.neet.DiamondHunter.Entity.Boss;
 import com.neet.DiamondHunter.HUD.Hud;
 import com.neet.DiamondHunter.Main.GamePanel;
 import com.neet.DiamondHunter.Manager.Data;
@@ -41,7 +42,9 @@ public class PlayState extends GameState {
 
 	// monster
 	private ArrayList<Monster> monster;
-	
+
+	//boss
+	private Boss boss;
 	// camera position
 	private int xsector;
 	private int ysector;
@@ -117,18 +120,20 @@ public class PlayState extends GameState {
 			
 	}
 	private void populateMonster(){
-
 		Monster m;
 		m = new Monster(tileMap);
-		m.setType(Monster.SMALL);
 		m.setTilePosition(11, 20);
 		monster.add(m);
-		
-		m = new Monster(tileMap);
-		m.setType(Monster.BOSS);
-		m.setTilePosition(11, 18);
-		monster.add(m);
 
+		m = new Monster(tileMap);
+		m.setTilePosition(6, 23);
+		monster.add(m);
+	}
+
+	private void populateBoss(){
+		Boss b;
+		b = new Boss(tileMap);
+		b.setTilePosition(11, 18);
 	}
 	
 	private void populateDiamonds() {
@@ -302,6 +307,9 @@ public class PlayState extends GameState {
 			Monster m = monster.get(i);
 			m.update();
 		}
+
+		//update boss
+		//boss.update();
 		
 	}
 	

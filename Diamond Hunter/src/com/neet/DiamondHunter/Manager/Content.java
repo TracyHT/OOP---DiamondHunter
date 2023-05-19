@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class Content {
 
-	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 160);
+	public static BufferedImage[][] MENUBG = load("/HUD/menu.gif", 160, 176);
 	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
 
 	public static BufferedImage[][] PLAYER = load("/Sprites/playersprites.png", 16, 16);

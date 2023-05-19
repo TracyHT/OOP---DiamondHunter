@@ -25,6 +25,9 @@ public class PauseState extends GameState {
 	public void draw(Graphics2D g) {
 		
 		Content.drawString(g, "paused", 40, 30);
+
+		Content.drawString(g, "Mute", 12, 66);
+		Content.drawString(g, ": Press x", 52, 66);
 		
 		Content.drawString(g, "arrow", 12, 76);
 		Content.drawString(g, "keys", 16, 84);
@@ -39,10 +42,26 @@ public class PauseState extends GameState {
 		
 	}
 	public void handleInput() {
+		//mute
+			if (Keys.isPressed(Keys.X)) {
+				if(PlayState.mute == true){
+					PlayState.mute = false;
+				}
+				else{
+					PlayState.mute = true;
+				}
+			}
+
 		if(Keys.isPressed(Keys.ESCAPE)) {
+			if(PlayState.mute == true){
+				JukeBox.resumeLoop("music1");
+			}
+			else{
+				JukeBox.stop("music1");
+			}
 			gsm.setPaused(false);
-			JukeBox.resumeLoop("music1");
 		}
+
 		if(Keys.isPressed(Keys.F1)) {
 			gsm.setPaused(false);
 			gsm.setState(GameStateManager.MENU);

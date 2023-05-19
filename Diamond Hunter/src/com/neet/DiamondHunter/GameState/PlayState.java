@@ -58,6 +58,9 @@ public class PlayState extends GameState {
 	
 	// transition box
 	private ArrayList<Rectangle> boxes;
+
+	//mute 
+	public static boolean mute = true;
 	
 	public PlayState(GameStateManager gsm) {
 		super(gsm);

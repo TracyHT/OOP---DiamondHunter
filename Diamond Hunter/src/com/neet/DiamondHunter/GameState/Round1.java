@@ -5,6 +5,7 @@
 
 package com.neet.DiamondHunter.GameState;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -271,6 +272,7 @@ public class Round1 extends GameState {
 		
 	}
 	
+	
 	public void draw(Graphics2D g) {
 		
 		// draw tilemap
@@ -325,6 +327,7 @@ public class Round1 extends GameState {
 	}
 	
 	//===============================================
+
 	
 	private void eventStart() {
 		eventTick++;
@@ -332,6 +335,7 @@ public class Round1 extends GameState {
 			boxes.clear();
 			for(int i = 0; i < 12; i++) {
 				boxes.add(new Rectangle(0, i * 16, GamePanel.WIDTH, 16));
+
 			}
 		}
 		if(eventTick > 1 && eventTick < 32) {

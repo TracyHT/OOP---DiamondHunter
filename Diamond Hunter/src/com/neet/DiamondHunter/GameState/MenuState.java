@@ -40,7 +40,6 @@ public class MenuState extends GameState {
 	public void draw(Graphics2D g) {
 		
 		g.drawImage(bg, 0, 0, null);
-		
 		Content.drawString(g, options[0], 62, 90);
 		Content.drawString(g, options[1], 66, 100);
 		Content.drawString(g, options[2], 44, 110);

@@ -5,15 +5,18 @@
 package com.neet.DiamondHunter.Manager;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import javax.imageio.ImageIO;
 
 public class Content {
 	
-	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 176);
-	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
+	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.gif", 160, 176);
+	public static BufferedImage[][] BAR = load("/HUD/bar.png", 160, 16);
 	
+
 	public static BufferedImage[][] PLAYER = load("/Sprites/playersprites.png", 16, 16);
 	public static BufferedImage[][] MONSTER = load("/Sprites/Monster.png", 16, 16);
 	public static BufferedImage[][] BOSS = load("/Sprites/Boss.png", 40, 40);
@@ -21,7 +24,7 @@ public class Content {
 	public static BufferedImage[][] SPARKLE = load("/Sprites/sparkle.gif", 16, 16);
 	public static BufferedImage[][] ITEMS = load("/Sprites/items.gif", 16, 16);
 	public static BufferedImage[][] HEARTS = load("/Sprites/heart.png", 16, 16);
-	
+
 	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);
 	
 	public static BufferedImage[][] load(String s, int w, int h) {

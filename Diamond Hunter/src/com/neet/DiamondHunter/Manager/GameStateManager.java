@@ -85,7 +85,7 @@ public class GameStateManager {
 			gameStates[i].init();
 		}
 		else if(i == GUIDELINE){
-			gameStates[i] = new Guideline(this);
+			gameStates[i] = new PauseState(this);
 			gameStates[i].init();
 		}
 	}

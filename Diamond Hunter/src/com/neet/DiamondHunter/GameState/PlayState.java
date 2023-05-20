@@ -323,11 +323,7 @@ public class PlayState extends GameState {
 		for(int i = 0; i < monster.size(); i++) {
 			Monster m = monster.get(i);
 			m.update();
-		}
-
-		//update boss
-		//boss.update();
-		
+		}	
 	}
 	
 	public void draw(Graphics2D g) {

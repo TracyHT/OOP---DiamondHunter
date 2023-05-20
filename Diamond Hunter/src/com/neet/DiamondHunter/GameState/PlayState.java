@@ -410,6 +410,7 @@ public class PlayState extends GameState {
 	private void eventFinish() {
 		eventTick++;
 		if (HealthControl.getHealth() == 0){
+			Data.setTime(player.getTicks());
 			gsm.setState(gsm.GAMEOVER);
 		}
 		if(eventTick == 1) {

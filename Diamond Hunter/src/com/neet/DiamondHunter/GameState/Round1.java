@@ -304,6 +304,7 @@ public class Round1 extends GameState {
 			}
 		}
 		if(eventTick > 33) {
+			Data.setTime(player.getTicks());
 			gsm.setState(gsm.ROUND2);
 			/*if(!JukeBox.isPlaying("finish")) {
 				Data.setTime(player.getTicks());

@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import com.neet.DiamondHunter.Manager.Content;
+import com.neet.DiamondHunter.Manager.Data;
 import com.neet.DiamondHunter.Manager.HealthControl;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.TileMap.TileMap;
@@ -52,6 +53,7 @@ public class Player extends Entity {
 		height = 16;
 		cwidth = 12;
 		cheight = 12;
+		ticks = Data.getTime();
 		
 		moveSpeed = 2;
 		health = HealthControl.getHealth();

@@ -18,7 +18,9 @@ public class MenuState extends GameState {
 	private int currentOption = 0;
 	private String[] options = {
 		"START",
-		"QUIT"
+		"QUIT",
+		"CHARACTER",
+		"GUIDELINE",
 	};
 	
 	public MenuState(GameStateManager gsm) {
@@ -40,11 +42,15 @@ public class MenuState extends GameState {
 		
 		g.drawImage(bg, 0, 0, null);
 		
-		Content.drawString(g, options[0], 44, 90);
-		Content.drawString(g, options[1], 48, 100);
+		Content.drawString(g, options[0], 62, 90);
+		Content.drawString(g, options[1], 66, 100);
+		Content.drawString(g, options[2], 44, 110);
+		Content.drawString(g, options[3], 44, 120);
 		
 		if(currentOption == 0) g.drawImage(diamond, 25, 86, null);
 		else if(currentOption == 1) g.drawImage(diamond, 25, 96, null);
+		else if (currentOption == 2) g.drawImage(diamond, 25, 106, null);
+		else if (currentOption == 3) g.drawImage(diamond, 25, 116, null);
 		
 	}
 	
@@ -53,17 +59,9 @@ public class MenuState extends GameState {
 			JukeBox.play("menuoption");
 			currentOption++;
 		}
-		else if((Keys.isPressed(Keys.DOWN) || Keys.isPressed(Keys.S)) && currentOption > 0){
+		else if((Keys.isPressed(Keys.UP) || Keys.isPressed(Keys.W)) && currentOption > 0) {
 			JukeBox.play("menuoption");
 			currentOption--;
-		}
-		if((Keys.isPressed(Keys.UP) || Keys.isPressed(Keys.W)) && currentOption > 0) {
-			JukeBox.play("menuoption");
-			currentOption--;
-		}
-		else if((Keys.isPressed(Keys.UP) || Keys.isPressed(Keys.W)) && currentOption < options.length - 1){
-			JukeBox.play("menuoption");
-			currentOption++;
 		}
 		if(Keys.isPressed(Keys.ENTER)) {
 			JukeBox.play("collect");
@@ -72,12 +70,19 @@ public class MenuState extends GameState {
 	}
 	
 	private void selectOption() {
-		if(currentOption == 0) {
-			gsm.setState(GameStateManager.PLAY);
-		}
-		if(currentOption == 1) {
-			System.exit(0);
-		}
-	}
-	
+        if (currentOption == 0) {
+            // "Start" option selected
+            gsm.setState(GameStateManager.ROUND2);
+        } else if (currentOption == 1) {
+            // "Quit" option selected
+            System.exit(0);
+        } else if (currentOption == 2) {
+            // "Character" option selected
+            gsm.setState(GameStateManager.CHARACTER);
+        } else if (currentOption == 3) {
+            // "Guideline" option selected
+            gsm.setState(GameStateManager.GUIDELINE);
+        }
+    }
 }
+

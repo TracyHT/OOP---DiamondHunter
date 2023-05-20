@@ -10,10 +10,12 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+
 import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Main.GamePanel;
 import com.neet.DiamondHunter.Manager.Content;
+import com.neet.DiamondHunter.Entity.Health;
 
 public class Hud {
 	
@@ -51,11 +53,11 @@ public class Hud {
 		
 		// draw hud
 		g.drawImage(bar, 0, yoffset, null);
-		
+	
 		// draw diamond bar
 		g.setColor(textColor);
 		g.fillRect(8, yoffset + 6, (int)(28.0 * player.numDiamonds() / numDiamonds), 4);
-		
+	
 		// draw diamond amount
 		g.setColor(textColor);
 		g.setFont(font);
@@ -63,11 +65,11 @@ public class Hud {
 		Content.drawString(g, s, 40, yoffset + 3);
 		if(player.numDiamonds() >= 10) g.drawImage(diamond, 80, yoffset, null);
 		else g.drawImage(diamond, 72, yoffset, null);
-		
+	
 		// draw items
 		if(player.hasBoat()) g.drawImage(boat, 100, yoffset, null);
 		if(player.hasAxe()) g.drawImage(axe, 112, yoffset, null);
-		
+	
 		// draw time
 		int minutes = (int) (player.getTicks() / 1800);
 		int seconds = (int) ((player.getTicks() / 30) % 60);
@@ -79,9 +81,9 @@ public class Hud {
 			if(seconds < 10) Content.drawString(g, minutes + ":0" + seconds, 85, 3);
 			else Content.drawString(g, minutes + ":" + seconds, 85, 3);
 		}
-		
-		
-		
-	}
 	
+		//draw healthbar
+		Health health = new Health();
+		health.draw(g);
+		}
 }

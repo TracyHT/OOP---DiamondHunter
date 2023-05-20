@@ -56,14 +56,14 @@ public class Player extends Entity {
 		
 		numDiamonds = 0;
 		
-		downSprites = Content.PLAYER[0];
-		leftSprites = Content.PLAYER[1];
-		rightSprites = Content.PLAYER[2];
-		upSprites = Content.PLAYER[3];
-		downBoatSprites = Content.PLAYER[4];
-		leftBoatSprites = Content.PLAYER[5];
-		rightBoatSprites = Content.PLAYER[6];
-		upBoatSprites = Content.PLAYER[7];
+		downSprites = Content.PLAYER1[0];
+		leftSprites = Content.PLAYER1[1];
+		rightSprites = Content.PLAYER1[2];
+		upSprites = Content.PLAYER1[3];
+		downBoatSprites = Content.PLAYER1[4];
+		leftBoatSprites = Content.PLAYER1[5];
+		rightBoatSprites = Content.PLAYER1[6];
+		upBoatSprites = Content.PLAYER1[7];
 		
 		animation.setFrames(downSprites);
 		animation.setDelay(10);
@@ -187,5 +187,9 @@ public class Player extends Entity {
 	public void draw(Graphics2D g) {
 		super.draw(g);
 	}
+
+    public int getHealth() {
+        return 0;
+    }
 	
 }

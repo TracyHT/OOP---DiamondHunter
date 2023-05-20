@@ -45,6 +45,8 @@ public class Keys {
 		else if(i == KeyEvent.VK_W) keyState[W] = b;
 		else if(i == KeyEvent.VK_S) keyState[S] = b;
 		else if(i == KeyEvent.VK_D) keyState[D] = b;
+		else if(i == KeyEvent.VK_1) keyState[1] = b;
+		else if(i == KeyEvent.VK_2) keyState[2] = b;
 
 	}
 	

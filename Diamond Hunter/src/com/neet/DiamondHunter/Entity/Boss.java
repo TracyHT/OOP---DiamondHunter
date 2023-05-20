@@ -10,9 +10,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import com.neet.DiamondHunter.Manager.Content;
-//import com.neet.DiamondHunter.Manager.Data;
 import com.neet.DiamondHunter.TileMap.TileMap;
-//import java.util.Random;
 
 public class Boss extends Entity {
 	
@@ -55,14 +53,11 @@ public class Boss extends Entity {
 		actionCounter++;
 
 		if (actionCounter == 120){
-			Random random = new Random();
-			int i = random.nextInt(2);
-
-			if (i == 0){
+			if (right){
 				setLeft();
 				return(-moveSpeed);
 			}
-			else if (i == 1){
+			else if (left){
 				setRight();
 				return (moveSpeed);
 			}

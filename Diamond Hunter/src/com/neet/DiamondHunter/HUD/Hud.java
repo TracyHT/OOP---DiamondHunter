@@ -23,7 +23,7 @@ public class Hud {
 	
 	private BufferedImage bar;
 	private BufferedImage diamond;
-	private BufferedImage boat;
+	private BufferedImage key;
 	private BufferedImage axe;
 	
 	private Player player;
@@ -41,7 +41,7 @@ public class Hud {
 		
 		bar = Content.BAR[0][0];
 		diamond = Content.DIAMOND[0][0];
-		boat = Content.ITEMS[0][0];
+		key = Content.ITEMS[0][2];
 		axe = Content.ITEMS[0][1];
 		
 		font = new Font("Arial", Font.PLAIN, 10);
@@ -67,7 +67,7 @@ public class Hud {
 		else g.drawImage(diamond, 72, yoffset, null);
 	
 		// draw items
-		if(player.hasBoat()) g.drawImage(boat, 100, yoffset, null);
+		if(player.hasBoat()) g.drawImage(key, 100, yoffset, null);
 		if(player.hasAxe()) g.drawImage(axe, 112, yoffset, null);
 	
 		// draw time

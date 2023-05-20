@@ -33,14 +33,9 @@ public class Round1 extends GameState {
 	// diamonds
 	private ArrayList<Diamond> diamonds;
 	
-	// items
-	private ArrayList<Item> items;
-	
 	// sparkles
 	private ArrayList<Sparkle> sparkles;
 
-	// monster
-	private ArrayList<Monster> monster;
 	
 	// camera position
 	private int xsector;
@@ -68,8 +63,6 @@ public class Round1 extends GameState {
 		// create lists
 		diamonds = new ArrayList<Diamond>();
 		sparkles = new ArrayList<Sparkle>();
-		//items = new ArrayList<Item>();
-		//monster = new ArrayList<Monster>();
 		
 		// load map
 		tileMap = new TileMap(16);
@@ -79,11 +72,9 @@ public class Round1 extends GameState {
 		// create player
 		player = new Player(tileMap);
 		
-		// fill lists
-		//populateMonster();
+		// fill lists - for round 1 only diamonds are populated
 		populateDiamonds();
-		//populateItems();
-		
+
 		// initialize player
 		player.setTilePosition(4, 4);
 		player.setTotalDiamonds(diamonds.size());

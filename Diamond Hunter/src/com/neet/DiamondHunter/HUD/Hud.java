@@ -15,7 +15,7 @@ import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Main.GamePanel;
 import com.neet.DiamondHunter.Manager.Content;
-import com.neet.DiamondHunter.Entity.Health;
+import com.neet.DiamondHunter.Manager.HealthControl;
 
 public class Hud {
 	
@@ -29,6 +29,7 @@ public class Hud {
 	private Player player;
 	
 	private int numDiamonds;
+	private int playerHealth;
 	
 	private Font font;
 	private Color textColor; 
@@ -81,9 +82,12 @@ public class Hud {
 			if(seconds < 10) Content.drawString(g, minutes + ":0" + seconds, 85, 3);
 			else Content.drawString(g, minutes + ":" + seconds, 85, 3);
 		}
-	
+		
 		//draw healthbar
-		Health health = new Health();
-		health.draw(g);
-		}
+		int xoffset = 10;
+        int yoffset = 10;
+        for (int i = 0; i < HealthControl.getHealth(); i++) {
+            g.drawImage(Content.HEARTS[0][0], xoffset + i * 20, yoffset, null);
+        }
+	}
 }

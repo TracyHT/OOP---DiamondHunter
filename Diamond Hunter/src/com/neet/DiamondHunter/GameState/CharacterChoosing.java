@@ -39,22 +39,30 @@ public class CharacterChoosing extends GameState {
         Content.drawString(g, "CHARACTER",42, 20);
         Content.drawString(g, "Press T",94, 135);
         Content.drawString(g, "Press O",14, 135);
+        Content.drawString(g, "BACK TO MENU: ESC",10, 150);
     }
 
     
     @Override
     public void handleInput() {
+        if (Keys.isPressed(Keys.ESCAPE)) {
+            gsm.setPaused(false);
+            JukeBox.resumeLoop("music1");
+            //Player.buttonPressed(1); // Choose player 1
+            choosingCharacter = false; // Exit character selection
+            gsm.setState(GameStateManager.MENU);
+        }
         if (choosingCharacter) {
             if (Keys.isPressed(Keys.O)) {
                 gsm.setPaused(false);
                 JukeBox.resumeLoop("music1");
-                Player.buttonPressed(1); // Choose player 1
+                //Player.buttonPressed(1); // Choose player 1
                 choosingCharacter = false; // Exit character selection
                 gsm.setState(GameStateManager.MENU);
             } else if (Keys.isPressed(Keys.T)) {
                 gsm.setPaused(false);
                 JukeBox.resumeLoop("music1");
-                Player.buttonPressed(2); // Choose player 2
+                //Player.buttonPressed(2); // Choose player 2
                 choosingCharacter = false; // Exit character selection
                 gsm.setState(GameStateManager.MENU);
             }

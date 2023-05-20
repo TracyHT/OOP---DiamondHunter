@@ -16,14 +16,14 @@ import com.neet.DiamondHunter.TileMap.TileMap;
 public class Player extends Entity {
 	
 	// sprites
-	private BufferedImage[] downSprites;
-	private BufferedImage[] leftSprites;
-	private BufferedImage[] rightSprites;
-	private BufferedImage[] upSprites;
-	private BufferedImage[] downBoatSprites;
-	private BufferedImage[] leftBoatSprites;
-	private BufferedImage[] rightBoatSprites;
-	private BufferedImage[] upBoatSprites;
+	private static BufferedImage[] downSprites;
+	private static BufferedImage[] leftSprites;
+	private static BufferedImage[] rightSprites;
+	private static BufferedImage[] upSprites;
+	private static BufferedImage[] downBoatSprites;
+	private static BufferedImage[] leftBoatSprites;
+	private static BufferedImage[] rightBoatSprites;
+	private static BufferedImage[] upBoatSprites;
 	
 	// animation
 	private final int DOWN = 0;
@@ -42,6 +42,8 @@ public class Player extends Entity {
 	private boolean hasAxe;
 	private boolean onWater;
 	private long ticks;
+	public static BufferedImage player1Sprite[][] = Content.PLAYER1;
+	private static BufferedImage player2Sprite[][] = Content.PLAYER2;
 	
 	public Player(TileMap tm) {
 		
@@ -56,17 +58,26 @@ public class Player extends Entity {
 		
 		numDiamonds = 0;
 		
-		downSprites = Content.PLAYER1[0];
-		leftSprites = Content.PLAYER1[1];
-		rightSprites = Content.PLAYER1[2];
-		upSprites = Content.PLAYER1[3];
-		downBoatSprites = Content.PLAYER1[4];
-		leftBoatSprites = Content.PLAYER1[5];
-		rightBoatSprites = Content.PLAYER1[6];
-		upBoatSprites = Content.PLAYER1[7];
+		downSprites = player1Sprite[0];
+		leftSprites = player1Sprite[1];
+		rightSprites = player1Sprite[2];
+		upSprites = player1Sprite[3];
+		downBoatSprites = Content.PLAYER2[4];
+		leftBoatSprites = Content.PLAYER2[5];
+		rightBoatSprites = Content.PLAYER2[6];
+		upBoatSprites = Content.PLAYER2[7];
+
+		/*downSprites = Content.PLAYER2[0];
+		leftSprites = Content.PLAYER2[1];
+		rightSprites = Content.PLAYER2[2];
+		upSprites = Content.PLAYER2[3];
+		downBoatSprites = Content.PLAYER2[4];
+		leftBoatSprites = Content.PLAYER2[5];
+		rightBoatSprites = Content.PLAYER2[6];
+		upBoatSprites = Content.PLAYER2[7];
 		
 		animation.setFrames(downSprites);
-		animation.setDelay(10);
+		animation.setDelay(10);*/
 		
 	}
 	
@@ -102,6 +113,23 @@ public class Player extends Entity {
 	public void setUp() {
 		super.setUp();
 	}
+
+	public static void buttonPressed(int button) {
+		if (button == 1) {
+			setImagechooseCharacter(player1Sprite);
+		} else if (button == 2) {
+			setImagechooseCharacter(player2Sprite);
+		}
+	}
+	
+
+    public  static void setImagechooseCharacter(BufferedImage[][] choseSprite) {
+		downSprites = player1Sprite[0];
+		leftSprites = player1Sprite[1];
+		rightSprites = player1Sprite[2];
+		upSprites = player1Sprite[3];
+	}
+	
 	
 	// Keyboard input.
 	// If Player has axe, dead trees in front

@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
 
 public class Keys {
 	
-	public static final int NUM_KEYS = 12;
+	public static final int NUM_KEYS = 14;
 	
 	public static boolean keyState[] = new boolean[NUM_KEYS];
 	public static boolean prevKeyState[] = new boolean[NUM_KEYS];
@@ -31,6 +31,8 @@ public class Keys {
 	public static int W = 9;
 	public static int S = 10;
 	public static int D = 11;
+	public static int O = 12;
+	public static int T = 13;
 	
 	public static void keySet(int i, boolean b) {
 		if(i == KeyEvent.VK_UP) keyState[UP] = b;
@@ -45,8 +47,8 @@ public class Keys {
 		else if(i == KeyEvent.VK_W) keyState[W] = b;
 		else if(i == KeyEvent.VK_S) keyState[S] = b;
 		else if(i == KeyEvent.VK_D) keyState[D] = b;
-		else if(i == KeyEvent.VK_1) keyState[1] = b;
-		else if(i == KeyEvent.VK_2) keyState[2] = b;
+		else if(i == KeyEvent.VK_1) keyState[O] = b;
+		else if(i == KeyEvent.VK_2) keyState[T] = b;
 
 	}
 	

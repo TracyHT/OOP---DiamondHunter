@@ -2,22 +2,16 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
+import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.Manager.GameStateManager;
+import com.neet.DiamondHunter.Manager.Keys;
+import com.neet.DiamondHunter.Manager.JukeBox;
 
 public class CharacterChoosing extends GameState {
+    private boolean choosingCharacter = true;
 
-    private BufferedImage player1Sprite = Content.PLAYER1[0][0];
-    private BufferedImage player2Sprite = Content.PLAYER2[0][0];
-    private boolean choosingCharacter = false;
-    private int selectedCharacter = 0;
-    private BufferedImage diamond;
-    private int currentOption = 0;
-	/*private String[] options = {
-		"Select Character"
-	}*/
     
 
     public CharacterChoosing(GameStateManager gsm) {
@@ -25,14 +19,7 @@ public class CharacterChoosing extends GameState {
     }
     
     //@Override
-    public void init() {
-        
-        /*player1Sprite = Content.PLAYER1[0][0];
-        player2Sprite = Content.PLAYER2[0][0];
-        diamond = Content.DIAMOND[0][0];
-        choosingCharacter = true;
-        selectedCharacter = 1;*/
-    }
+    public void init() {}
 
     @Override
     public void update() {
@@ -41,49 +28,39 @@ public class CharacterChoosing extends GameState {
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(Color.RED);
-        g.fillRect(0, 0, 160, 176);
+        g.setColor(Color.ORANGE);
+       
+        g.drawImage(Content.CharacterFrame[0][0],null, 0, 0);
+        g.drawImage(Content.PLAYER1[0][0], 33, 70, null);
+        g.drawImage(Content.PLAYER2[0][0], 105, 50, null);
+
         Content.drawString(g, "CHOOSE", 34, 10);
         Content.drawString(g, "YOUR", 86, 10);
         Content.drawString(g, "CHARACTER",42, 20);
-        
-        if (choosingCharacter) {
-            g.drawImage(Content.PLAYER1[0][0], 120, 90, null);
-            g.drawImage(Content.PLAYER2[0][0], 60, 90, null);
-            //g.drawImage(Sprites.diamond, 200, 90, null);
-        } else {
-            if (selectedCharacter == 0)
-                g.drawImage(player1Sprite, 120, 90, null);
-            else if (selectedCharacter == 1)
-                g.drawImage(player2Sprite, 120, 90, null);
-        }
-        //Content.drawString(g, options[0], 62, 90);
-		
-		//if(currentOption == 0) g.drawImage(diamond, 25, 86, null);
-		//else if(currentOption == 1) g.drawImage(diamond, 25, 96, null);
+        Content.drawString(g, "Press T",94, 135);
+        Content.drawString(g, "Press O",14, 135);
     }
 
+    
     @Override
     public void handleInput() {
-        if (choosingCharacter && selectedCharacter == 0){
-            chooseCharacter(1);
-        } else if (choosingCharacter && selectedCharacter == 1){
-            chooseCharacter(2);
+        if (choosingCharacter) {
+            if (Keys.isPressed(Keys.O)) {
+                gsm.setPaused(false);
+                JukeBox.resumeLoop("music1");
+                Player.buttonPressed(1); // Choose player 1
+                choosingCharacter = false; // Exit character selection
+                gsm.setState(GameStateManager.MENU);
+            } else if (Keys.isPressed(Keys.T)) {
+                gsm.setPaused(false);
+                JukeBox.resumeLoop("music1");
+                Player.buttonPressed(2); // Choose player 2
+                choosingCharacter = false; // Exit character selection
+                gsm.setState(GameStateManager.MENU);
+            }
         }
-        
-    }
-
-    public void chooseCharacter(int character) {
-        if (character == 1) {
-            selectedCharacter = 0; // player 1
-            player1Sprite = Content.PLAYER1[0][0];
-            player2Sprite = Content.PLAYER2[0][0];
-        } else if (character == 2) {
-            selectedCharacter = 1; // player 2
-            player1Sprite = Content.PLAYER1[0][0];
-            player2Sprite = Content.PLAYER2[0][0];
-        }
-        choosingCharacter = false;
     }
 }
+    
+
 

@@ -12,6 +12,9 @@ import com.neet.DiamondHunter.Manager.GameStateManager;
 public abstract class GameState {
 	
 	protected GameStateManager gsm;
+
+	//action
+	protected int actionCounter = 0;
 	
 	public GameState(GameStateManager gsm) {
 		this.gsm = gsm;

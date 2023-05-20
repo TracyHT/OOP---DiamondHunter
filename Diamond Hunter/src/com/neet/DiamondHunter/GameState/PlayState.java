@@ -19,6 +19,7 @@ import com.neet.DiamondHunter.HUD.Hud;
 import com.neet.DiamondHunter.Main.GamePanel;
 import com.neet.DiamondHunter.Manager.Data;
 import com.neet.DiamondHunter.Manager.GameStateManager;
+import com.neet.DiamondHunter.Manager.HealthControl;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 import com.neet.DiamondHunter.TileMap.TileMap;
@@ -45,6 +46,10 @@ public class PlayState extends GameState {
 
 	//boss
 	private Boss boss;
+
+	//counter
+	int timeCounter;
+
 	// camera position
 	private int xsector;
 	private int ysector;
@@ -218,6 +223,10 @@ public class PlayState extends GameState {
 		if(player.numDiamonds() == player.getTotalDiamonds()) {
 			eventFinish = blockInput = true;
 		}
+
+		if(player.getHealth() == 0){
+			eventFinish= blockInput = true;
+		}
 		
 		// update camera
 		int oldxs = xsector;
@@ -236,6 +245,20 @@ public class PlayState extends GameState {
 		// update player
 		player.update();
 		
+		//update health
+		for(int i = 0; i < monster.size(); i++) {
+			
+			Monster m = monster.get(i);
+			m.update();
+			
+			// player collects diamond
+			if(player.intersects(m)) {
+				// decrease health
+				player.changeHealth(-1);
+				// play health decreased sound
+				JukeBox.play("collect");				
+			}
+		}
 		// update diamonds
 		for(int i = 0; i < diamonds.size(); i++) {
 			
@@ -300,11 +323,7 @@ public class PlayState extends GameState {
 		for(int i = 0; i < monster.size(); i++) {
 			Monster m = monster.get(i);
 			m.update();
-		}
-
-		//update boss
-		//boss.update();
-		
+		}	
 	}
 	
 	public void draw(Graphics2D g) {
@@ -314,6 +333,9 @@ public class PlayState extends GameState {
 		
 		// draw player
 		player.draw(g);
+
+		// draw hud
+		hud.draw(g);
 		
 		// draw diamonds
 		for(Diamond d : diamonds) {
@@ -335,9 +357,6 @@ public class PlayState extends GameState {
 		for(Monster i : monster){
 			i.draw(g);
 		}
-		
-		// draw hud
-		hud.draw(g);
 		
 		// draw transition boxes
 		g.setColor(java.awt.Color.BLACK);
@@ -390,6 +409,9 @@ public class PlayState extends GameState {
 	
 	private void eventFinish() {
 		eventTick++;
+		if (HealthControl.getHealth() == 0){
+			gsm.setState(gsm.GAMEOVER);
+		}
 		if(eventTick == 1) {
 			boxes.clear();
 			for(int i = 0; i < 9; i++) {

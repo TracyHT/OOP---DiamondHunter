@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import com.neet.DiamondHunter.Manager.Content;
+import com.neet.DiamondHunter.Manager.HealthControl;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.TileMap.TileMap;
 
@@ -53,6 +54,8 @@ public class Player extends Entity {
 		cheight = 12;
 		
 		moveSpeed = 2;
+		health = HealthControl.getHealth();
+		
 		
 		numDiamonds = 0;
 		
@@ -103,6 +106,14 @@ public class Player extends Entity {
 		super.setUp();
 	}
 	
+	public void changeHealth(int amount) {
+		actionCounter++;
+		if (actionCounter == 16){
+			setHealth(-1);
+			HealthControl.modifyHealth(-1);	
+			actionCounter = 0;
+		}
+	}
 	// Keyboard input.
 	// If Player has axe, dead trees in front
 	// of the Player will be chopped down.
@@ -180,16 +191,10 @@ public class Player extends Entity {
 		
 		// update position
 		super.update();
-		
 	}
 	
 	// Draw Player.
 	public void draw(Graphics2D g) {
 		super.draw(g);
 	}
-
-    public int getHealth() {
-        return 0;
-    }
-	
 }

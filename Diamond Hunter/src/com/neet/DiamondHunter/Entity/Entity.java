@@ -35,6 +35,7 @@ public abstract class Entity {
 	
 	// attributes
 	protected int moveSpeed;
+	protected int health;
 	
 	// tilemap
 	protected TileMap tileMap;
@@ -59,6 +60,7 @@ public abstract class Entity {
 	public int gety() { return y; }
 	public int getRow() { return rowTile; }
 	public int getCol() { return colTile; }
+	public int getHealth() { return health; }
 	
 	public void setPosition(int i1, int i2) {
 		x = i1;
@@ -66,6 +68,11 @@ public abstract class Entity {
 		xdest = x;
 		ydest = y;
 	}
+
+	public void setHealth(int healthChange){
+		this.health += healthChange;
+	}
+	
 	public void setMapPosition() {
 		xmap = tileMap.getx();
 		ymap = tileMap.gety();

@@ -9,12 +9,12 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import com.neet.DiamondHunter.Entity.Boss;
 import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Item;
 import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Entity.Sparkle;
 import com.neet.DiamondHunter.Entity.Monster;
-import com.neet.DiamondHunter.Entity.Boss;
 import com.neet.DiamondHunter.HUD.Hud;
 import com.neet.DiamondHunter.Main.GamePanel;
 import com.neet.DiamondHunter.Manager.Data;
@@ -23,7 +23,7 @@ import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 import com.neet.DiamondHunter.TileMap.TileMap;
 
-public class PlayState extends GameState {
+public class Round3 extends GameState {
 	
 	// player
 	private Player player;
@@ -43,8 +43,9 @@ public class PlayState extends GameState {
 	// monster
 	private ArrayList<Monster> monster;
 
-	//boss
-	private Boss boss;
+    // boss
+    private ArrayList<Boss> boss;
+	
 	// camera position
 	private int xsector;
 	private int ysector;
@@ -62,7 +63,7 @@ public class PlayState extends GameState {
 	// transition box
 	private ArrayList<Rectangle> boxes;
 	
-	public PlayState(GameStateManager gsm) {
+	public Round3(GameStateManager gsm) {
 		super(gsm);
 	}
 	
@@ -73,11 +74,12 @@ public class PlayState extends GameState {
 		sparkles = new ArrayList<Sparkle>();
 		items = new ArrayList<Item>();
 		monster = new ArrayList<Monster>();
+        boss = new ArrayList<Boss>();
 		
 		// load map
 		tileMap = new TileMap(16);
 		tileMap.loadTiles("/Tilesets/testtileset.png");
-		tileMap.loadMap("/Maps/testmap.map");
+		tileMap.loadMap("/Maps/map3.map");
 		
 		// create player
 		player = new Player(tileMap);
@@ -85,14 +87,15 @@ public class PlayState extends GameState {
 		// fill lists
 		populateMonster();
 		populateDiamonds();
+        populateBoss();
 		populateItems();
 		
 		// initialize player
-		player.setTilePosition(13, 14);
+		player.setTilePosition(5, 4);
 		player.setTotalDiamonds(diamonds.size());
 		
 		// set up camera position
-		sectorSize = GamePanel.HEIGHT - 32;
+		sectorSize = GamePanel.HEIGHT - 16;
 		xsector = (player.getx()) / sectorSize;
 		ysector = (player.gety()) / sectorSize;
 		tileMap.setPositionImmediately(-xsector * sectorSize, -ysector * sectorSize);
@@ -119,15 +122,39 @@ public class PlayState extends GameState {
 		eventStart();
 			
 	}
-	private void populateMonster(){
+    private void populateMonster(){
 		Monster m;
 		m = new Monster(tileMap);
-		m.setTilePosition(11, 20);
+		m.setTilePosition(6, 6);
 		monster.add(m);
 
 		m = new Monster(tileMap);
 		m.setTilePosition(6, 23);
 		monster.add(m);
+	}
+
+	private void populateBoss(){
+		Boss b;
+		b = new Boss(tileMap);
+		b.setTilePosition(34, 33);
+        boss.add(b);
+	}
+
+    private void populateItems() {
+		
+		Item item;
+
+		item = new Item(tileMap);
+		item.setType(Item.AXE);
+		item.setTilePosition(17, 13);
+		items.add(item);
+		
+		
+		item = new Item(tileMap);
+		item.setType(Item.KEY);
+		item.setTilePosition(5, 5);
+		items.add(item);
+		
 	}
 	
 	private void populateDiamonds() {
@@ -135,75 +162,24 @@ public class PlayState extends GameState {
 		Diamond d;
 		
 		d = new Diamond(tileMap);
-		d.setTilePosition(20, 20);
-		d.addChange(new int[] { 23, 19, 1 });
-		d.addChange(new int[] { 23, 20, 1 });
+		d.setTilePosition(4, 7);
+		d.addChange(new int[] { 7, 5, 1 });
+		d.addChange(new int[] { 7, 6, 1 });
 		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(12, 36);
-		d.addChange(new int[] { 31, 17, 1 });
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(28, 4);
-		d.addChange(new int[] {27, 7, 1});
-		d.addChange(new int[] {28, 7, 1});
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 34);
-		d.addChange(new int[] { 31, 21, 1 });
-		diamonds.add(d);
-		
-		d = new Diamond(tileMap);
-		d.setTilePosition(28, 19);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(35, 26);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(38, 36);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(27, 28);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(20, 30);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(14, 25);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 21);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(9, 14);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 3);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(20, 14);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(13, 20);
-		diamonds.add(d);
-		
-	}
-	
-	private void populateItems() {
-		
-		Item item;
 
-		item = new Item(tileMap);
-		item.setType(Item.AXE);
-		item.setTilePosition(3, 22);
-		items.add(item);
+		d = new Diamond(tileMap);
+		d.setTilePosition(13, 12);
+		d.addChange(new int[] { 6, 12, 1 });
+		d.addChange(new int[] { 6, 13, 1 });
+		diamonds.add(d);
 		
-		
-		item = new Item(tileMap);
-		item.setType(Item.KEY);
-		item.setTilePosition(12, 4);
-		items.add(item);
-		
+		d = new Diamond(tileMap);
+		d.setTilePosition(5, 16);
+		diamonds.add(d);
+
+		d = new Diamond(tileMap);
+		d.setTilePosition(13, 3);
+		diamonds.add(d);
 	}
 	
 	public void update() {
@@ -267,11 +243,9 @@ public class PlayState extends GameState {
 				}
 				if(ali.size() != 0) {
 					JukeBox.play("tilechange");
-				}
-				
+				}	
 			}
 		}
-		
 		// update sparkles
 		for(int i = 0; i < sparkles.size(); i++) {
 			Sparkle s = sparkles.get(i);
@@ -281,30 +255,26 @@ public class PlayState extends GameState {
 				i--;
 			}
 		}
-		
-		// update items
-		for(int i = 0; i < items.size(); i++) {
-			Item item = items.get(i);
-			if(player.intersects(item)) {
-				items.remove(i);
-				i--;
-				item.collected(player);
-				JukeBox.play("collect");
-				Sparkle s = new Sparkle(tileMap);
-				s.setPosition(item.getx(), item.gety());
-				sparkles.add(s);
-			}
-		}
 
-		//update monster
+        // update items
+        for(int i = 0; i < items.size(); i++) {
+            Item item = items.get(i);
+            if(player.intersects(item)) {
+                items.remove(i);
+                i--;
+                item.collected(player);
+                JukeBox.play("collect");
+                Sparkle s = new Sparkle(tileMap);
+                s.setPosition(item.getx(), item.gety());
+                sparkles.add(s);
+            }
+        }
+
+        //update monster
 		for(int i = 0; i < monster.size(); i++) {
 			Monster m = monster.get(i);
 			m.update();
 		}
-
-		//update boss
-		//boss.update();
-		
 	}
 	
 	public void draw(Graphics2D g) {
@@ -331,11 +301,16 @@ public class PlayState extends GameState {
 			i.setLeft();
 		}
 
-		//draw Monster
+        //draw Monster
 		for(Monster i : monster){
 			i.draw(g);
 		}
-		
+
+        //draw Boss
+		for(Boss i : boss){
+			i.draw(g);
+		}
+
 		// draw hud
 		hud.draw(g);
 		
@@ -366,7 +341,7 @@ public class PlayState extends GameState {
 		eventTick++;
 		if(eventTick == 1) {
 			boxes.clear();
-			for(int i = 0; i < 9; i++) {
+			for(int i = 0; i < 12; i++) {
 				boxes.add(new Rectangle(0, i * 16, GamePanel.WIDTH, 16));
 			}
 		}
@@ -411,7 +386,6 @@ public class PlayState extends GameState {
 			}
 		}
 		if(eventTick > 33) {
-			gsm.setState(gsm.ROUND3);
 			if(!JukeBox.isPlaying("finish")) {
 				Data.setTime(player.getTicks());
 				gsm.setState(GameStateManager.GAMEOVER);

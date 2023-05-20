@@ -17,6 +17,7 @@ import com.neet.DiamondHunter.GameState.MenuState;
 import com.neet.DiamondHunter.GameState.PauseState;
 import com.neet.DiamondHunter.GameState.PlayState;
 import com.neet.DiamondHunter.GameState.Round1;
+import com.neet.DiamondHunter.GameState.Round3;
 
 
 public class GameStateManager {
@@ -34,6 +35,7 @@ public class GameStateManager {
 	public static final int GAMEOVER = 2;
 	public static final int ROUND1 = 3;
 	public static final int ROUND2 = 4;
+	public static final int ROUND3 = 5;
 	public static final int CHARACTER = 6;
 	public static final int GUIDELINE = 7;
 	
@@ -68,6 +70,10 @@ public class GameStateManager {
 		}
 		else if(i == ROUND2) {
 			gameStates[i] = new PlayState(this);
+			gameStates[i].init();
+		}
+		else if (i == ROUND3) {
+			gameStates[i] = new Round3(this);
 			gameStates[i].init();
 		}
 		else if(i == GAMEOVER) {

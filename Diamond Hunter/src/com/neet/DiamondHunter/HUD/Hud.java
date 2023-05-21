@@ -23,13 +23,13 @@ public class Hud {
 	
 	private BufferedImage bar;
 	private BufferedImage diamond;
+	private BufferedImage weapon;
 	private BufferedImage key;
 	private BufferedImage axe;
 	
 	private Player player;
 	
 	private int numDiamonds;
-	private int playerHealth;
 	
 	private Font font;
 	private Color textColor; 
@@ -44,6 +44,7 @@ public class Hud {
 		diamond = Content.DIAMOND[0][0];
 		key = Content.ITEMS[0][2];
 		axe = Content.ITEMS[0][1];
+		weapon = Content.ITEMS[0][0];
 		
 		font = new Font("Arial", Font.PLAIN, 10);
 		textColor = new Color(47, 64, 126);
@@ -68,7 +69,8 @@ public class Hud {
 		else g.drawImage(diamond, 72, yoffset, null);
 	
 		// draw items
-		if(player.hasBoat()) g.drawImage(key, 100, yoffset, null);
+		if(player.hasKey()) g.drawImage(key, 100, yoffset, null);
+		if(player.hasWeapon()) g.drawImage(weapon, 100, yoffset, null);
 		if(player.hasAxe()) g.drawImage(axe, 112, yoffset, null);
 	
 		// draw time

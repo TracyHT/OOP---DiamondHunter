@@ -2,6 +2,7 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.concurrent.TimeUnit;
 
 import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Manager.Content;
@@ -12,6 +13,7 @@ import com.neet.DiamondHunter.Manager.JukeBox;
 public class CharacterChoosing extends GameState {
     private boolean choosingCharacter = true;
     private int charoption = 0;
+    private int square = 17;
     private boolean pressspace = false;
     private String [] option = {
         "Name",
@@ -36,7 +38,7 @@ public class CharacterChoosing extends GameState {
         g.setColor(Color.ORANGE);
        
         g.drawImage(Content.CharacterFrame[0][0],null, 0, 0);
-        g.drawImage(Content.PLAYER1[0][0], 33, 70, null);
+        g.drawImage(Content.PLAYER1[0][0], 30, 70, null);
         g.drawImage(Content.PLAYER2[0][0], 110, 70, null);
 
         Content.drawString(g, "CHOOSE", 34, 10);
@@ -47,6 +49,14 @@ public class CharacterChoosing extends GameState {
         Content.drawString(g, "CHOOSE CHAR: SPACE   ", 10, 130);
         Content.drawString(g, "START: ENTER", 10, 140);
         Content.drawString(g, "BACK TO MENU: ESC",10, 150);
+
+        g.setColor(Color.WHITE);
+        g.drawRect(square, 48, 48, 55);
+
+        if(pressspace){ 
+        g.setColor(Color.YELLOW);
+        g.drawRect(square, 48, 48, 55);
+        }
     }
 
     
@@ -61,25 +71,29 @@ public class CharacterChoosing extends GameState {
         }
         if (choosingCharacter) {
             if (Keys.isPressed(Keys.A) || Keys.isPressed(Keys.LEFT)) {
-                if(charoption == 1){
+                if(charoption > 0){
                     JukeBox.play("menuoption");
-                    charoption = 0;
+                    charoption--;
+                    square = 17;
                 }
                 else if(charoption == 0){
                     JukeBox.play("menuoption");
-                    charoption = 1;
+                    charoption = option.length - 1;
+                    square = 93;
                 }
 
                 //Player.buttonPressed(1); // Choose player 1
                 
             } else if (Keys.isPressed(Keys.D) || Keys.isPressed(Keys.RIGHT)) {
-                if(charoption == 1){ 
+                if(charoption == option.length - 1){ 
                     JukeBox.play("menuoption");
                     charoption = 0;
+                    square = 17;
                 }
-                else if(charoption == 0){
+                else if(charoption < option.length - 1){
                     JukeBox.play("menuoption");
-                    charoption = 1;
+                    charoption++;
+                    square = 93;
                 }
                 
                 //Player.buttonPressed(2); // Choose player 2
@@ -90,6 +104,7 @@ public class CharacterChoosing extends GameState {
             choosingCharacter = false; // Exit character selection
             selectOption();
             pressspace = true;
+            
         }
         if (Keys.isPressed(Keys.ENTER) && pressspace){
             JukeBox.play("collect");

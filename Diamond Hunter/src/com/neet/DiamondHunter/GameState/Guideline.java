@@ -24,20 +24,20 @@ public class Guideline extends GameState {
         g.drawImage(Content.GUIDELINE[0][0], 0, 0, null);
         g.drawImage(Content.GUIDELINETITLE[0][0], 10, 20, null);
 		
-		Content.drawString(g, "move:", 20, 76);
-		Content.drawString(g, "a w s d", 70, 72);
-        Content.drawString(g, "or arrow", 64, 82);
+		Content.drawString(g, "move:", 24, 76);
+		Content.drawString(g, "a w s d", 72, 72);
+        Content.drawString(g, "or arrow", 66, 82);
 		
-		Content.drawString(g, "space", 12, 96);
-		Content.drawString(g, ": action", 54, 96);
+		Content.drawString(g, "space", 14, 96);
+		Content.drawString(g, ": action", 56, 96);
 		
-		Content.drawString(g, "esc:", 28, 112);
-		Content.drawString(g, "return", 70, 108);
-		Content.drawString(g, "to menu", 68, 116);
+		Content.drawString(g, "esc:", 32, 112);
+		Content.drawString(g, "return", 72, 108);
+		Content.drawString(g, "to menu", 70, 116);
 
-        Content.drawString(g, "enter:", 12, 132);
-        Content.drawString(g, "choose", 76, 128);
-        Content.drawString(g, "character", 66, 136);
+        Content.drawString(g, "enter:", 16, 132);
+        Content.drawString(g, "choose", 78, 128);
+        Content.drawString(g, "character", 68, 136);
 		
     }
     
@@ -54,6 +54,7 @@ public class Guideline extends GameState {
                 gsm.setState(GameStateManager.CHARACTER);
             }
         }
+        //in order to press Enter you have to press Space to choose the character
         
     }
 

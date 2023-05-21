@@ -417,7 +417,7 @@ public class Round2 extends GameState {
 		eventTick++;
 		if (HealthControl.getHealth() == 0){
 			Data.setTime(player.getTicks());
-			gsm.setState(gsm.GAMEOVER);
+			gsm.setState(GameStateManager.GAMEWIN);
 		}
 		if(eventTick == 1) {
 			boxes.clear();

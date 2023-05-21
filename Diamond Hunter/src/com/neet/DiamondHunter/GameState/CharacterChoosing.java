@@ -32,13 +32,13 @@ public class CharacterChoosing extends GameState {
        
         g.drawImage(Content.CharacterFrame[0][0],null, 0, 0);
         g.drawImage(Content.PLAYER1[0][0], 33, 70, null);
-        g.drawImage(Content.PLAYER2[0][0], 105, 50, null);
+        g.drawImage(Content.PLAYER2[0][0], 110, 70, null);
 
         Content.drawString(g, "CHOOSE", 34, 10);
         Content.drawString(g, "YOUR", 86, 10);
         Content.drawString(g, "CHARACTER",42, 20);
-        Content.drawString(g, "Press T",94, 135);
-        Content.drawString(g, "Press O",14, 135);
+        Content.drawString(g, "KEY:T",97, 108);
+        Content.drawString(g, "KEY:O",20, 108);
         Content.drawString(g, "BACK TO MENU: ESC",10, 150);
     }
 

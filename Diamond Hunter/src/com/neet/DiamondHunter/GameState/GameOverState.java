@@ -25,6 +25,7 @@ public class GameOverState extends GameState {
 	
 	private int rank;
 	private long ticks;
+	int a = 2;
 	
 	public GameOverState(GameStateManager gsm) {
 		super(gsm);
@@ -46,26 +47,26 @@ public class GameOverState extends GameState {
 		g.setColor(color);
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT2);
 		
-		Content.drawString(g, "finish time", 30, 36);
+		Content.drawString(g, "finish time", 36+a, 36);
 		
 		int minutes = (int) (ticks / 1800);
 		int seconds = (int) ((ticks / 30) % 60);
 		if(minutes < 10) {
-			if(seconds < 10) Content.drawString(g, "0" + minutes + ":0" + seconds, 54, 48);
-			else Content.drawString(g, "0" + minutes + ":" + seconds, 54, 48);
+			if(seconds < 10) Content.drawString(g, "0" + minutes + ":0" + seconds, 60+a, 48);
+			else Content.drawString(g, "0" + minutes + ":" + seconds, 60+a, 48);
 		}
 		else {
-			if(seconds < 10) Content.drawString(g, minutes + ":0" + seconds, 54, 48);
-			else Content.drawString(g, minutes + ":" + seconds, 54, 48);
+			if(seconds < 10) Content.drawString(g, minutes + ":0" + seconds, 60+a, 48);
+			else Content.drawString(g, minutes + ":" + seconds, 60+a, 48);
 		}
 		
-		Content.drawString(g, "rank", 58, 66);
-		if(rank == 1) Content.drawString(g, "speed demon", 30, 78);
-		else if(rank == 2) Content.drawString(g, "adventurer", 34, 78);
-		else if(rank == 3) Content.drawString(g, "beginner", 32, 78);
-		else if(rank == 4) Content.drawString(g, "bumbling idiot", 18, 78);
+		Content.drawString(g, "rank", 64+a, 66);
+		if(rank == 1) Content.drawString(g, "speed demon", 36+a, 78);
+		else if(rank == 2) Content.drawString(g, "adventurer", 40+a, 78);
+		else if(rank == 3) Content.drawString(g, "beginner", 38+a, 78);
+		else if(rank == 4) Content.drawString(g, "bumbling idiot", 24+a, 78);
 		
-		Content.drawString(g, "press any key", 22, 110);
+		Content.drawString(g, "press any key", 28+a, 110);
 		
 	}
 	

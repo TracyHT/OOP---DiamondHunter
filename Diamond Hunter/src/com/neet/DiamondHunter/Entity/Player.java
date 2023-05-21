@@ -15,6 +15,7 @@ import com.neet.DiamondHunter.Manager.HealthControl;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.TileMap.TileMap;
 import com.neet.DiamondHunter.Entity.Bullet;
+import com.neet.DiamondHunter.GameState.CharacterChoosing;
 
 public class Player extends Entity {
 	
@@ -63,6 +64,8 @@ public class Player extends Entity {
 		
 		numDiamonds = 0;
 		
+		if(CharacterChoosing.character){
+
 		downSprites = Content.PLAYER1[0];
 		leftSprites = Content.PLAYER1[1];
 		rightSprites = Content.PLAYER1[2];
@@ -74,6 +77,23 @@ public class Player extends Entity {
 		
 		animation.setFrames(downSprites);
 		animation.setDelay(10);
+
+		}
+		else{
+
+		downSprites = Content.PLAYER2[0];
+		leftSprites = Content.PLAYER2[1];
+		rightSprites = Content.PLAYER2[2];
+		upSprites = Content.PLAYER2[3];
+		downBoatSprites = Content.PLAYER2[4];
+		leftBoatSprites = Content.PLAYER2[5];
+		rightBoatSprites = Content.PLAYER2[6];
+		upBoatSprites = Content.PLAYER2[7];
+		
+		animation.setFrames(downSprites);
+		animation.setDelay(10);
+		}
+		
 		
 	}
 	

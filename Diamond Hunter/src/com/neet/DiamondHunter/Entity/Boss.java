@@ -15,10 +15,6 @@ import com.neet.DiamondHunter.TileMap.TileMap;
 public class Boss extends Entity {
 	
 	BufferedImage[] sprites;
-	private int type;
-	public static final int SMALL = 0;
-	public static final int BOSS = 1;
-	
 	public Boss(TileMap tm) {
 		
 		super(tm);

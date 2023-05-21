@@ -8,6 +8,7 @@ package com.neet.DiamondHunter.Entity;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import java.util.ArrayList;
 
 import com.neet.DiamondHunter.Manager.Content;
 //import com.neet.DiamondHunter.Manager.Data;
@@ -19,6 +20,7 @@ public class Monster extends Entity {
 	BufferedImage[] sprites;
 	public static final int SMALL = 0;
 	public static final int BOSS = 1;
+	private ArrayList<int[]> tileChanges;
 	
 	public Monster(TileMap tm) {
 		
@@ -29,9 +31,13 @@ public class Monster extends Entity {
 		height = 16;
 		cwidth = 12;
 		cheight = 12;
+		health = 1;
+		
 		sprites = Content.MONSTER[1];
 		animation.setFrames(sprites);
 		animation.setDelay(4);
+
+		tileChanges = new ArrayList<int[]>();
 		
 	}
 	public void setDown() {
@@ -46,6 +52,13 @@ public class Monster extends Entity {
 	public void setUp() {
 		super.setUp();
 	}
+	
+	public void addChange(int[] i) {
+		tileChanges.add(i);
+	}
+	public ArrayList<int[]> getChanges() {
+		return tileChanges;
+	}
 
 	public void setAction() {
 		actionCounter++;
@@ -59,6 +72,11 @@ public class Monster extends Entity {
 	
 			actionCounter = 0;
 		}
+	}
+
+	public boolean shouldRemove() {
+       if (getHealth() <= 0) return true;
+        return false;
 	}
 	
 	public void update() {

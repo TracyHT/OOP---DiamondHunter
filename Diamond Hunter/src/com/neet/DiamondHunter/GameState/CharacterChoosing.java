@@ -12,6 +12,7 @@ import com.neet.DiamondHunter.Manager.JukeBox;
 public class CharacterChoosing extends GameState {
     private boolean choosingCharacter = true;
     private int charoption = 0;
+    private boolean pressspace = false;
     private String [] option = {
         "Name",
         "Name"
@@ -88,8 +89,9 @@ public class CharacterChoosing extends GameState {
             JukeBox.play("collect");
             choosingCharacter = false; // Exit character selection
             selectOption();
+            pressspace = true;
         }
-        if (Keys.isPressed(Keys.ENTER)){
+        if (Keys.isPressed(Keys.ENTER) && pressspace){
             JukeBox.play("collect");
             gsm.setState(GameStateManager.ROUND2);
         }

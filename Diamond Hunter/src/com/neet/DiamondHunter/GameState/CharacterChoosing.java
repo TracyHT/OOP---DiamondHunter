@@ -110,7 +110,7 @@ public class CharacterChoosing extends GameState {
         }
         if (Keys.isPressed(Keys.ENTER) && pressspace){
             JukeBox.play("collect");
-            gsm.setState(GameStateManager.ROUND1);
+            gsm.setState(GameStateManager.ROUND2);
         }
     }
 

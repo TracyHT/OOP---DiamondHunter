@@ -19,7 +19,7 @@ import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 
-public class GameOverState extends GameState {
+public class GameWinState extends GameState {
 	
 	private Color color;
 	
@@ -27,7 +27,7 @@ public class GameOverState extends GameState {
 	private long ticks;
 	int a = 2;
 	
-	public GameOverState(GameStateManager gsm) {
+	public GameWinState(GameStateManager gsm) {
 		super(gsm);
 	}
 	
@@ -45,7 +45,9 @@ public class GameOverState extends GameState {
 	public void draw(Graphics2D g) {
 		
 		g.setColor(color);
-		g.drawImage(Content.GAMEOVERLOSE[0][0], 0, 0, null);
+		g.drawImage(Content.GAMEOVERWIN[0][0], 0, 0, null);
+		
+		Content.drawString(g, "finish time", 36+a, 36);
 		
 		int minutes = (int) (ticks / 1800);
 		int seconds = (int) ((ticks / 30) % 60);

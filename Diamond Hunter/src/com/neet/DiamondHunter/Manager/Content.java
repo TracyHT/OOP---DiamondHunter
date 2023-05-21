@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 public class Content {
-	
+
 	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 176);
 	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
 	public static BufferedImage[][] GUIDELINE = load("/HUD/GuideLine.png", 160, 176);
@@ -23,10 +23,9 @@ public class Content {
 	public static BufferedImage[][] DIAMOND = load("/Sprites/diamond.gif", 16, 16);
 	public static BufferedImage[][] SPARKLE = load("/Sprites/sparkle.gif", 16, 16);
 	public static BufferedImage[][] BULLET = load("/Sprites/bullet.png", 13, 14);
-	public static BufferedImage[][] ITEMS = load("/Sprites/items.png", 16, 16);
+	public static BufferedImage[][] ITEMS = load("/Sprites/All item.png", 16, 16);
 	public static BufferedImage[][] HEARTS = load("/Sprites/Heart.png", 16, 16);
-	
-	
+
 	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);
 
 	public static BufferedImage[][] load(String s, int w, int h) {

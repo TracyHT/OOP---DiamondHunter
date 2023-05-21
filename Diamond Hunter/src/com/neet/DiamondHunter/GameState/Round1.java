@@ -285,7 +285,7 @@ public class Round1 extends GameState {
 		eventTick++;
 		if(eventTick == 1) {
 			boxes.clear();
-			for(int i = 0; i < 9; i++) {
+			for(int i = 0; i < 12; i++) {
 				if(i % 2 == 0) boxes.add(new Rectangle(-128, i * 16, GamePanel.WIDTH, 16));
 				else boxes.add(new Rectangle(128, i * 16, GamePanel.WIDTH, 16));
 			}

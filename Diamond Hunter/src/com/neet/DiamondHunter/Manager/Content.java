@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 public class Content {
 	
 	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 176);
-	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
+	public static BufferedImage[][] BAR = load("/HUD/bar.png", 128, 16);
 	public static BufferedImage[][] GUIDELINE = load("/HUD/guideline.png", 160, 176);
 	public static BufferedImage[][] GUIDELINETITLE = load("/HUD/guidelinetitle.png", 137, 17);
 	public static BufferedImage[][] CHOOSECHAR = load("/HUD/choosechar.png", 135, 27);

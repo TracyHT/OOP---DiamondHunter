@@ -19,6 +19,7 @@ public class Boss extends Entity {
 		
 		super(tm);
 		moveSpeed = 5;
+		health = 10;
 		
         width = 40;
         height = 40;
@@ -61,6 +62,10 @@ public class Boss extends Entity {
 		}
 		return 0;
 	}
+	public boolean shouldRemove() {
+		if (getHealth() <= 0) return true;
+		 return false;
+	 }
 	
 	public void update() {
 		animation.update();

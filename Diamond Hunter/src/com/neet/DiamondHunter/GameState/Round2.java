@@ -100,7 +100,7 @@ public class Round2 extends GameState {
 		populateItems();
 		
 		// initialize player
-		player.setTilePosition(13, 14);
+		player.setTilePosition(11,14);
 		player.setTotalDiamonds(diamonds.size());
 		
 		// set up camera position
@@ -134,40 +134,43 @@ public class Round2 extends GameState {
 	private void populateMonster(){
 		Monster m;
 		m = new Monster(tileMap);
-		m.setTilePosition(11, 20);
-		monster.add(m);
-
-		m = new Monster(tileMap);
-		m.setTilePosition(11, 16);
+		m.setTilePosition(8, 5);
 		monster.add(m);
 	}
 	
 	private void populateDiamonds() {
 		
 		Diamond d;
+	
+		d = new Diamond(tileMap);
+		d.setTilePosition(7, 9);
+		d.addChange(new int[] { 11, 11, 1 });
+		d.addChange(new int[] { 12, 11, 1 });
+		diamonds.add(d);
+
+		d = new Diamond(tileMap);
+		d.setTilePosition(7, 3);
+		d.addChange(new int[] { 5, 3, 1 });
+		d.addChange(new int[] { 5, 4, 1 });
+		diamonds.add(d);
 		
 		d = new Diamond(tileMap);
-		d.setTilePosition(20, 20);
-		d.addChange(new int[] { 23, 19, 1 });
-		d.addChange(new int[] { 23, 20, 1 });
+		d.setTilePosition(20, 17);
 		diamonds.add(d);
+
 		d = new Diamond(tileMap);
-		d.setTilePosition(12, 36);
-		d.addChange(new int[] { 31, 17, 1 });
+		d.setTilePosition(3,11);
 		diamonds.add(d);
-		
+
 		d = new Diamond(tileMap);
-		d.setTilePosition(2, 11);
+		d.setTilePosition(20,4);
 		diamonds.add(d);
+
 		d = new Diamond(tileMap);
-		d.setTilePosition(35, 26);
+		d.setTilePosition(3, 2);
 		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(38, 36);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		
 	}
+
 	private void generateBullet(){
 		if(monster.size() == 0 && boss.size() == 0)return;
 		Bullet bu = new Bullet(tileMap);
@@ -182,13 +185,13 @@ public class Round2 extends GameState {
 
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		item.setTilePosition(3, 22);
+		item.setTilePosition(10, 20);
 		items.add(item);
 		
 		
 		item = new Item(tileMap);
 		item.setType(Item.WEAPON);
-		item.setTilePosition(13, 15);
+		item.setTilePosition(11, 3);
 		items.add(item);
 		
 	}
@@ -391,7 +394,7 @@ public class Round2 extends GameState {
 		eventTick++;
 		if(eventTick == 1) {
 			boxes.clear();
-			for(int i = 0; i < 9; i++) {
+			for(int i = 0; i < 12; i++) {
 				boxes.add(new Rectangle(0, i * 16, GamePanel.WIDTH, 16));
 			}
 		}
@@ -421,7 +424,7 @@ public class Round2 extends GameState {
 		}
 		if(eventTick == 1) {
 			boxes.clear();
-			for(int i = 0; i < 9; i++) {
+			for(int i = 0; i < 12; i++) {
 				if(i % 2 == 0) boxes.add(new Rectangle(-128, i * 16, GamePanel.WIDTH, 16));
 				else boxes.add(new Rectangle(128, i * 16, GamePanel.WIDTH, 16));
 			}
@@ -440,6 +443,7 @@ public class Round2 extends GameState {
 			}
 		}
 		if(eventTick > 33) {
+			Data.setTime(player.getTicks());
 			gsm.setState(gsm.ROUND3);
 			if(!JukeBox.isPlaying("finish")) {
 				Data.setTime(player.getTicks());

@@ -12,12 +12,16 @@ import com.neet.DiamondHunter.Manager.JukeBox;
 
 public class CharacterChoosing extends GameState {
     private boolean choosingCharacter = true;
+    private boolean pressspace = false;
+
+    public static boolean character = true;
+
     private int charoption = 0;
     private int square = 17;
-    private boolean pressspace = false;
+    
     private String [] option = {
-        "Name",
-        "Name"
+        "uipn",
+        "ipin"
     };
     
 
@@ -116,10 +120,10 @@ public class CharacterChoosing extends GameState {
         if (charoption == 0 || charoption == 1){
             gsm.setPaused(false);
             if (charoption == 0){
-            
+                character = true;
             }
             else if(charoption == 1){
-                
+                character = false;
             }
         }
     }

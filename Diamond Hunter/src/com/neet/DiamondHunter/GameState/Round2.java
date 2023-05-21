@@ -420,7 +420,7 @@ public class Round2 extends GameState {
 		eventTick++;
 		if (HealthControl.getHealth() == 0){
 			Data.setTime(player.getTicks());
-			gsm.setState(gsm.GAMEOVER);
+			gsm.setState(GameStateManager.GAMEOVER);
 		}
 		if(eventTick == 1) {
 			boxes.clear();
@@ -447,7 +447,7 @@ public class Round2 extends GameState {
 			gsm.setState(gsm.ROUND3);
 			if(!JukeBox.isPlaying("finish")) {
 				Data.setTime(player.getTicks());
-				gsm.setState(GameStateManager.GAMEOVER);
+				gsm.setState(GameStateManager.ROUND3);
 			}
 		}
 	}

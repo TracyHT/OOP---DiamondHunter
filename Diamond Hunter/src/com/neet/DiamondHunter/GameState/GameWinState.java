@@ -19,38 +19,35 @@ import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 
-public class GameOverState extends GameState {
-
+public class GameWinState extends GameState {
+	
 	private Color color;
-
+	
 	private int rank;
 	private long ticks;
 	int a = 2;
 	
-	public GameOverState(GameStateManager gsm) {
+	public GameWinState(GameStateManager gsm) {
 		super(gsm);
 	}
-
+	
 	public void init() {
 		color = new Color(164, 198, 222);
 		ticks = Data.getTime();
-		if (ticks < 3600)
-			rank = 1;
-		else if (ticks < 5400)
-			rank = 2;
-		else if (ticks < 7200)
-			rank = 3;
-		else
-			rank = 4;
+		if(ticks < 3600) rank = 4;
+		else if(ticks < 5400) rank = 3;
+		else if(ticks < 7200) rank = 2;
+		else rank = 1;
 	}
-
-	public void update() {
-	}
-
+	
+	public void update() {}
+	
 	public void draw(Graphics2D g) {
-
+		
 		g.setColor(color);
-		g.drawImage(Content.GAMEOVERLOSE[0][0], 0, 0, null);
+		g.drawImage(Content.GAMEOVERWIN[0][0], 0, 0, null);
+		
+		Content.drawString(g, "finish time", 36+a, 36);
 		
 		int minutes = (int) (ticks / 1800);
 		int seconds = (int) ((ticks / 30) % 60);
@@ -72,12 +69,12 @@ public class GameOverState extends GameState {
 		Content.drawString(g, "press any key", 28+a, 110);
 		
 	}
-
+	
 	public void handleInput() {
-		if (Keys.isPressed(Keys.ENTER)) {
+		if(Keys.isPressed(Keys.ENTER)) {
 			gsm.setState(GameStateManager.MENU);
 			JukeBox.play("collect");
 		}
 	}
-
+	
 }

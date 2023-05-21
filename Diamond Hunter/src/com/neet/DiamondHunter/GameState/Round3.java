@@ -446,7 +446,7 @@ public class Round3 extends GameState {
 		if(boss.get(0).getHealth() <= 0) {
 			if(!JukeBox.isPlaying("finish")) {
 				Data.setTime(player.getTicks());
-				gsm.setState(GameStateManager.GAMEOVER);
+				gsm.setState(GameStateManager.GAMEWIN);
 			}
 		}
 	}

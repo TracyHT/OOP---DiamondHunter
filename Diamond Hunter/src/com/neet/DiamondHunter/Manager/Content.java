@@ -15,6 +15,7 @@ public class Content {
 	public static BufferedImage[][] BAR = load("/HUD/bar.png", 128, 16);
 	public static BufferedImage[][] GUIDELINE = load("/HUD/guideline.png", 160, 176);
 	public static BufferedImage[][] GUIDELINETITLE = load("/HUD/guidelinetitle.png", 137, 17);
+	public static BufferedImage[][] CHOOSECHAR = load("/HUD/choosechar.png", 135, 27);
 	public static BufferedImage[][] CharacterFrame = load("/HUD/Character.png", 160, 176);
 
 	public static BufferedImage[][] PLAYER1 = load("/Sprites/playersprites.png", 16, 16);
@@ -26,6 +27,9 @@ public class Content {
 	public static BufferedImage[][] BULLET = load("/Sprites/bullet.png", 13, 14);
 	public static BufferedImage[][] ITEMS = load("/Sprites/items.png", 16, 16);
 	public static BufferedImage[][] HEARTS = load("/Sprites/Heart.png", 16, 16);
+
+	public static BufferedImage[][] GAMEOVERWIN = load("/HUD/gameoverwin.png", 160, 176);
+	public static BufferedImage[][] GAMEOVERLOSE = load("/HUD/gameoverlose.png", 160, 176);
 	
 	
 	public static BufferedImage[][] font = load("/HUD/font.gif", 8, 8);

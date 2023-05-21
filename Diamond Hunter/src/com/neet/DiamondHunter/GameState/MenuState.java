@@ -75,7 +75,7 @@ public class MenuState extends GameState {
 	private void selectOption() {
 		if (currentOption == 0) {
 			// "Start" option selected
-			gsm.setState(GameStateManager.ROUND2);
+			gsm.setState(GameStateManager.ROUND1);
 		} else if (currentOption == 1) {
 			// "Quit" option selected
 			System.exit(0);

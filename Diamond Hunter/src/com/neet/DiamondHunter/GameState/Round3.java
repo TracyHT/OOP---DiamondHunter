@@ -389,6 +389,10 @@ public class Round3 extends GameState {
 	
 	private void eventStart() {
 		eventTick++;
+		if (HealthControl.getHealth() == 0){
+			Data.setTime(player.getTicks());
+			gsm.setState(gsm.GAMEOVER);
+		}
 		if(eventTick == 1) {
 			boxes.clear();
 			for(int i = 0; i < 9; i++) {

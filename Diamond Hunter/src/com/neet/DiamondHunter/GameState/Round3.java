@@ -98,6 +98,7 @@ public class Round3 extends GameState {
 		populateMonster();
 		populateDiamonds();
 		populateItems();
+		populateBoss();
 		
 		// initialize player
 		player.setTilePosition(5, 4);
@@ -134,38 +135,27 @@ public class Round3 extends GameState {
 	private void populateMonster(){
 		Monster m;
 		m = new Monster(tileMap);
-		m.setTilePosition(11, 20);
+		m.setTilePosition(3, 14);
 		monster.add(m);
 
 		m = new Monster(tileMap);
-		m.setTilePosition(11, 16);
+		m.setTilePosition(4, 34);
+		monster.add(m);
+
+		m = new Monster(tileMap);
+		m.setTilePosition(12, 34);
 		monster.add(m);
 	}
+
+	private void populateBoss(){
+		Boss b;
+		b = new Boss(tileMap);
+		b.setTilePosition(32, 35);
+		boss.add(b);
+	} 
 	
 	private void populateDiamonds() {
-		
-		Diamond d;
-		
-		d = new Diamond(tileMap);
-		d.setTilePosition(20, 20);
-		d.addChange(new int[] { 23, 19, 1 });
-		d.addChange(new int[] { 23, 20, 1 });
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(12, 36);
-		d.addChange(new int[] { 31, 17, 1 });
-		diamonds.add(d);
-		
-		d = new Diamond(tileMap);
-		d.setTilePosition(2, 11);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(35, 26);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(38, 36);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
+		//no diamond in this round
 		
 	}
 	private void generateBullet(){
@@ -182,7 +172,7 @@ public class Round3 extends GameState {
 
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		item.setTilePosition(3, 22);
+		item.setTilePosition(10, 27);
 		items.add(item);
 		
 		
@@ -202,7 +192,7 @@ public class Round3 extends GameState {
 		if(eventStart) eventStart();
 		if(eventFinish) eventFinish();
 		
-		if(player.numDiamonds() == player.getTotalDiamonds()) {
+		if(boss.get(0).shouldRemove()) {
 			eventFinish = blockInput = true;
 		}
 
@@ -226,6 +216,12 @@ public class Round3 extends GameState {
 		
 		// update player
 		player.update();
+
+		//update boss
+		
+		Boss b = boss.get(0);
+		for(int j = 0; j < bullets.size(); j++)
+					if(b.intersects(bullets.get(j))) b.setHealth(-1);
 		
 		//update health
 		for(int i = 0; i < monster.size(); i++) {
@@ -360,6 +356,10 @@ public class Round3 extends GameState {
 		for(Monster i : monster){
 			i.draw(g);
 		}
+
+		for(Boss i: boss){
+			i.draw(g);
+		}
 		
 		// draw transition boxes
 		g.setColor(java.awt.Color.BLACK);
@@ -395,7 +395,7 @@ public class Round3 extends GameState {
 		}
 		if(eventTick == 1) {
 			boxes.clear();
-			for(int i = 0; i < 9; i++) {
+			for(int i = 0; i < 12; i++) {
 				boxes.add(new Rectangle(0, i * 16, GamePanel.WIDTH, 16));
 			}
 		}
@@ -425,7 +425,7 @@ public class Round3 extends GameState {
 		}
 		if(eventTick == 1) {
 			boxes.clear();
-			for(int i = 0; i < 9; i++) {
+			for(int i = 0; i < 12; i++) {
 				if(i % 2 == 0) boxes.add(new Rectangle(-128, i * 16, GamePanel.WIDTH, 16));
 				else boxes.add(new Rectangle(128, i * 16, GamePanel.WIDTH, 16));
 			}
@@ -443,7 +443,7 @@ public class Round3 extends GameState {
 				}
 			}
 		}
-		if(eventTick > 33) {
+		if(boss.get(0).getHealth() <= 0) {
 			if(!JukeBox.isPlaying("finish")) {
 				Data.setTime(player.getTicks());
 				gsm.setState(GameStateManager.GAMEOVER);

@@ -14,7 +14,7 @@ import com.neet.DiamondHunter.Entity.Monster;
 public class Bullet extends Entity {
 	
 	private boolean remove;
-    private double distanceMin = 300;
+    private double distanceMin = 1000;
     private int indexMin = -1;
     private int type = 0;
     private Entity target;

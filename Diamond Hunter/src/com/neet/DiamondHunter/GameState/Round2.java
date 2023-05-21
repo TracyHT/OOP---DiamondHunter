@@ -15,6 +15,7 @@ import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Entity.Sparkle;
 import com.neet.DiamondHunter.Entity.Monster;
 import com.neet.DiamondHunter.Entity.Boss;
+import com.neet.DiamondHunter.Entity.Bullet;
 import com.neet.DiamondHunter.HUD.Hud;
 import com.neet.DiamondHunter.Main.GamePanel;
 import com.neet.DiamondHunter.Manager.Data;
@@ -23,8 +24,9 @@ import com.neet.DiamondHunter.Manager.HealthControl;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 import com.neet.DiamondHunter.TileMap.TileMap;
+import com.neet.DiamondHunter.Entity.Bullet;
 
-public class PlayState extends GameState {
+public class Round2 extends GameState {
 	
 	// player
 	private Player player;
@@ -41,11 +43,14 @@ public class PlayState extends GameState {
 	// sparkles
 	private ArrayList<Sparkle> sparkles;
 
+	//bullets
+	private ArrayList<Bullet> bullets;
+
 	// monster
 	private ArrayList<Monster> monster;
 
 	//boss
-	private Boss boss;
+	private ArrayList<Boss> boss;
 
 	//counter
 	int timeCounter;
@@ -67,7 +72,7 @@ public class PlayState extends GameState {
 	// transition box
 	private ArrayList<Rectangle> boxes;
 	
-	public PlayState(GameStateManager gsm) {
+	public Round2(GameStateManager gsm) {
 		super(gsm);
 	}
 	
@@ -78,11 +83,13 @@ public class PlayState extends GameState {
 		sparkles = new ArrayList<Sparkle>();
 		items = new ArrayList<Item>();
 		monster = new ArrayList<Monster>();
-		
+		boss = new ArrayList<Boss>();
+		bullets = new ArrayList<Bullet>();
+
 		// load map
 		tileMap = new TileMap(16);
 		tileMap.loadTiles("/Tilesets/testtileset.png");
-		tileMap.loadMap("/Maps/testmap.map");
+		tileMap.loadMap("/Maps/map2.map");
 		
 		// create player
 		player = new Player(tileMap);
@@ -131,7 +138,7 @@ public class PlayState extends GameState {
 		monster.add(m);
 
 		m = new Monster(tileMap);
-		m.setTilePosition(6, 23);
+		m.setTilePosition(11, 16);
 		monster.add(m);
 	}
 	
@@ -148,18 +155,9 @@ public class PlayState extends GameState {
 		d.setTilePosition(12, 36);
 		d.addChange(new int[] { 31, 17, 1 });
 		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(28, 4);
-		d.addChange(new int[] {27, 7, 1});
-		d.addChange(new int[] {28, 7, 1});
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 34);
-		d.addChange(new int[] { 31, 21, 1 });
-		diamonds.add(d);
 		
 		d = new Diamond(tileMap);
-		d.setTilePosition(28, 19);
+		d.setTilePosition(2, 11);
 		diamonds.add(d);
 		d = new Diamond(tileMap);
 		d.setTilePosition(35, 26);
@@ -168,30 +166,14 @@ public class PlayState extends GameState {
 		d.setTilePosition(38, 36);
 		diamonds.add(d);
 		d = new Diamond(tileMap);
-		d.setTilePosition(27, 28);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(20, 30);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(14, 25);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 21);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(9, 14);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 3);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(20, 14);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(13, 20);
-		diamonds.add(d);
 		
+	}
+	private void generateBullet(){
+		if(monster.size() == 0 && boss.size() == 0)return;
+		Bullet bu = new Bullet(tileMap);
+ 		bu.setPosition(player.getx(), player.gety());
+		bu.setTarget(monster,boss,player.getx(), player.gety());
+		bullets.add(bu);
 	}
 	
 	private void populateItems() {
@@ -205,8 +187,8 @@ public class PlayState extends GameState {
 		
 		
 		item = new Item(tileMap);
-		item.setType(Item.KEY);
-		item.setTilePosition(12, 4);
+		item.setType(Item.WEAPON);
+		item.setTilePosition(13, 15);
 		items.add(item);
 		
 	}
@@ -323,7 +305,23 @@ public class PlayState extends GameState {
 		for(int i = 0; i < monster.size(); i++) {
 			Monster m = monster.get(i);
 			m.update();
+			for(int j = 0; j < bullets.size(); j++)
+					if(m.intersects(bullets.get(j))) m.setHealth(-1);
+			if (m.getHealth() <= 0){
+				monster.remove(i);
+				i--;
+			}
 		}	
+
+		//update bullets
+		for(int i = 0; i < bullets.size(); i++) {
+			Bullet bu = bullets.get(i);
+			bu.update();
+			if(bu.shouldRemove()) {
+				bullets.remove(i);
+				i--;
+			}
+		}
 	}
 	
 	public void draw(Graphics2D g) {
@@ -340,6 +338,11 @@ public class PlayState extends GameState {
 		// draw diamonds
 		for(Diamond d : diamonds) {
 			d.draw(g);
+		}
+
+		//draw bullets
+		for(Bullet bu : bullets) {
+			bu.draw(g);
 		}
 		
 		// draw sparkles
@@ -370,6 +373,9 @@ public class PlayState extends GameState {
 		if(Keys.isPressed(Keys.ESCAPE)) {
 			JukeBox.stop("music1");
 			gsm.setPaused(true);
+		}
+		if (Keys.isPressed(Keys.SPACE)) {
+			if(player.hasWeapon()) generateBullet();
 		}
 		if(blockInput) return;
 		if(Keys.isDown(Keys.LEFT) || Keys.isDown(Keys.A)) player.setLeft();

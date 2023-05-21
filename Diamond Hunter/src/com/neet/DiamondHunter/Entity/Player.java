@@ -14,6 +14,7 @@ import com.neet.DiamondHunter.Manager.Data;
 import com.neet.DiamondHunter.Manager.HealthControl;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.TileMap.TileMap;
+import com.neet.DiamondHunter.Entity.Bullet;
 
 public class Player extends Entity {
 	
@@ -40,7 +41,8 @@ public class Player extends Entity {
 	// gameplay
 	private int numDiamonds;
 	private int totalDiamonds;
-	private boolean hasBoat;
+	private boolean hasWeapon;
+	private boolean hasKey;
 	private boolean hasAxe;
 	private boolean onWater;
 	private long ticks;
@@ -86,10 +88,12 @@ public class Player extends Entity {
 	public int getTotalDiamonds() { return totalDiamonds; }
 	public void setTotalDiamonds(int i) { totalDiamonds = i; }
 	
-	public void gotBoat() { hasBoat = true; tileMap.replace(22, 4); }
+	public void gotWeapon() { hasWeapon = true; }
+	public void gotKey() { hasKey = true; }
 	public void gotAxe() { hasAxe = true; }
-	public boolean hasBoat() { return hasBoat; }
+	public boolean hasWeapon() { return hasWeapon; }
 	public boolean hasAxe() { return hasAxe; }
+	public boolean hasKey() { return hasKey; }
 	
 	// Used to update time.
 	public long getTicks() { return ticks; }
@@ -147,6 +151,7 @@ public class Player extends Entity {
 		// check if on water
 		boolean current = onWater;
 		if(tileMap.getIndex(ydest / tileSize, xdest / tileSize) == 4) {
+			changeHealth(-1);
 			onWater = true;
 		}
 		else {

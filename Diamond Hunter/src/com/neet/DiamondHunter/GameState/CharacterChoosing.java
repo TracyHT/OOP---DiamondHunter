@@ -11,7 +11,11 @@ import com.neet.DiamondHunter.Manager.JukeBox;
 
 public class CharacterChoosing extends GameState {
     private boolean choosingCharacter = true;
-
+    private int charoption = 0;
+    private String [] option = {
+        "Name",
+        "Name"
+    };
     
 
     public CharacterChoosing(GameStateManager gsm) {
@@ -37,8 +41,10 @@ public class CharacterChoosing extends GameState {
         Content.drawString(g, "CHOOSE", 34, 10);
         Content.drawString(g, "YOUR", 86, 10);
         Content.drawString(g, "CHARACTER",42, 20);
-        Content.drawString(g, "KEY:T",97, 108);
-        Content.drawString(g, "KEY:O",20, 108);
+        Content.drawString(g, option[1],97, 108);
+        Content.drawString(g, option[0],20, 108);
+        Content.drawString(g, "CHOOSE CHAR: SPACE   ", 10, 130);
+        Content.drawString(g, "START: ENTER", 10, 140);
         Content.drawString(g, "BACK TO MENU: ESC",10, 150);
     }
 
@@ -53,18 +59,50 @@ public class CharacterChoosing extends GameState {
             gsm.setState(GameStateManager.MENU);
         }
         if (choosingCharacter) {
-            if (Keys.isPressed(Keys.O)) {
-                gsm.setPaused(false);
-                JukeBox.resumeLoop("music1");
+            if (Keys.isPressed(Keys.A) || Keys.isPressed(Keys.LEFT)) {
+                if(charoption == 1){
+                    JukeBox.play("menuoption");
+                    charoption = 0;
+                }
+                else if(charoption == 0){
+                    JukeBox.play("menuoption");
+                    charoption = 1;
+                }
+
                 //Player.buttonPressed(1); // Choose player 1
-                choosingCharacter = false; // Exit character selection
-                gsm.setState(GameStateManager.MENU);
-            } else if (Keys.isPressed(Keys.T)) {
-                gsm.setPaused(false);
-                JukeBox.resumeLoop("music1");
+                
+            } else if (Keys.isPressed(Keys.D) || Keys.isPressed(Keys.RIGHT)) {
+                if(charoption == 1){ 
+                    JukeBox.play("menuoption");
+                    charoption = 0;
+                }
+                else if(charoption == 0){
+                    JukeBox.play("menuoption");
+                    charoption = 1;
+                }
+                
                 //Player.buttonPressed(2); // Choose player 2
-                choosingCharacter = false; // Exit character selection
-                gsm.setState(GameStateManager.MENU);
+            }
+        }
+        if (Keys.isPressed(Keys.SPACE)){
+            JukeBox.play("collect");
+            choosingCharacter = false; // Exit character selection
+            selectOption();
+        }
+        if (Keys.isPressed(Keys.ENTER)){
+            JukeBox.play("collect");
+            gsm.setState(GameStateManager.ROUND2);
+        }
+    }
+
+    private void selectOption(){
+        if (charoption == 0 || charoption == 1){
+            gsm.setPaused(false);
+            if (charoption == 0){
+            
+            }
+            else if(charoption == 1){
+                
             }
         }
     }

@@ -13,7 +13,8 @@ public class Content {
 	
 	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 176);
 	public static BufferedImage[][] BAR = load("/HUD/bar.gif", 128, 16);
-	public static BufferedImage[][] GUIDELINE = load("/HUD/GuideLine.png", 160, 176);
+	public static BufferedImage[][] GUIDELINE = load("/HUD/guideline.png", 160, 176);
+	public static BufferedImage[][] GUIDELINETITLE = load("/HUD/guidelinetitle.png", 137, 17);
 	public static BufferedImage[][] CharacterFrame = load("/HUD/Character.png", 160, 176);
 
 	public static BufferedImage[][] PLAYER1 = load("/Sprites/playersprites.png", 16, 16);

@@ -8,6 +8,7 @@ package com.neet.DiamondHunter.Entity;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import java.util.ArrayList;
 
 import com.neet.DiamondHunter.Manager.Content;
 //import com.neet.DiamondHunter.Manager.Data;
@@ -17,15 +18,26 @@ import com.neet.DiamondHunter.TileMap.TileMap;
 public class Monster extends Entity {
 	
 	BufferedImage[] sprites;
-	private int type;
 	public static final int SMALL = 0;
 	public static final int BOSS = 1;
+	private ArrayList<int[]> tileChanges;
 	
 	public Monster(TileMap tm) {
 		
 		super(tm);
-		moveSpeed = 5;
+		moveSpeed = 3;
 		
+		width = 16;
+		height = 16;
+		cwidth = 12;
+		cheight = 12;
+		health = 1;
+		
+		sprites = Content.MONSTER[1];
+		animation.setFrames(sprites);
+		animation.setDelay(4);
+
+		tileChanges = new ArrayList<int[]>();
 		
 	}
 	public void setDown() {
@@ -40,57 +52,37 @@ public class Monster extends Entity {
 	public void setUp() {
 		super.setUp();
 	}
+	
+	public void addChange(int[] i) {
+		tileChanges.add(i);
+	}
+	public ArrayList<int[]> getChanges() {
+		return tileChanges;
+	}
 
-	public void setType(int i) {
-		type = i;
-		if(type == SMALL) {
-			width = 16;
-			height = 16;
-			cwidth = 12;
-			cheight = 12;
-			sprites = Content.MONSTER[1];
-			animation.setFrames(sprites);
-			animation.setDelay(4);
-		}
-		else if(type == BOSS) {
-			width = 40;
-			height = 40;
-			cwidth = 36;
-			cheight = 36;
-			sprites = Content.BOSS[0];
-			animation.setFrames(sprites);
-			animation.setDelay(4);
-		}
-	}
-	public int getType(){
-		return type;
-	}
-	public void move(int direction){
-		super.setPosition(super.getx() + direction, super.gety());
-	}
-	public int setAction() {
+	public void setAction() {
 		actionCounter++;
 
-		if (actionCounter == 120){
+		if (actionCounter == 16){
 			Random random = new Random();
 			int i = random.nextInt(2);
 
-			if (i == 0){
-				setLeft();
-				return(-moveSpeed);
-			}
-			else if (i == 1){
-				setRight();
-				return (moveSpeed);
-			}
+			if (i == 0) setLeft();
+			else if (i == 1) setRight();
+	
 			actionCounter = 0;
 		}
-		return 0;
+	}
+
+	public boolean shouldRemove() {
+       if (getHealth() <= 0) return true;
+        return false;
 	}
 	
 	public void update() {
 		animation.update();
-		//move(setAction());
+		setAction();
+		super.update();
 	}
 	
 	public void draw(Graphics2D g) {

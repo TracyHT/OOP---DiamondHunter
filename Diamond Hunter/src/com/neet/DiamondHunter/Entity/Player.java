@@ -10,8 +10,12 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import com.neet.DiamondHunter.Manager.Content;
+import com.neet.DiamondHunter.Manager.Data;
+import com.neet.DiamondHunter.Manager.HealthControl;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.TileMap.TileMap;
+import com.neet.DiamondHunter.Entity.Bullet;
+import com.neet.DiamondHunter.GameState.CharacterChoosing;
 
 public class Player extends Entity {
 	
@@ -38,7 +42,8 @@ public class Player extends Entity {
 	// gameplay
 	private int numDiamonds;
 	private int totalDiamonds;
-	private boolean hasBoat;
+	private boolean hasWeapon;
+	private boolean hasKey;
 	private boolean hasAxe;
 	private boolean onWater;
 	private long ticks;
@@ -51,22 +56,44 @@ public class Player extends Entity {
 		height = 16;
 		cwidth = 12;
 		cheight = 12;
+		ticks = Data.getTime();
 		
 		moveSpeed = 2;
+		health = HealthControl.getHealth();
+		
 		
 		numDiamonds = 0;
 		
-		downSprites = Content.PLAYER[0];
-		leftSprites = Content.PLAYER[1];
-		rightSprites = Content.PLAYER[2];
-		upSprites = Content.PLAYER[3];
-		downBoatSprites = Content.PLAYER[4];
-		leftBoatSprites = Content.PLAYER[5];
-		rightBoatSprites = Content.PLAYER[6];
-		upBoatSprites = Content.PLAYER[7];
+		if(CharacterChoosing.character){
+
+		downSprites = Content.PLAYER1[0];
+		leftSprites = Content.PLAYER1[1];
+		rightSprites = Content.PLAYER1[2];
+		upSprites = Content.PLAYER1[3];
+		downBoatSprites = Content.PLAYER1[4];
+		leftBoatSprites = Content.PLAYER1[5];
+		rightBoatSprites = Content.PLAYER1[6];
+		upBoatSprites = Content.PLAYER1[7];
 		
 		animation.setFrames(downSprites);
 		animation.setDelay(10);
+
+		}
+		else{
+
+		downSprites = Content.PLAYER2[0];
+		leftSprites = Content.PLAYER2[1];
+		rightSprites = Content.PLAYER2[2];
+		upSprites = Content.PLAYER2[3];
+		downBoatSprites = Content.PLAYER2[4];
+		leftBoatSprites = Content.PLAYER2[5];
+		rightBoatSprites = Content.PLAYER2[6];
+		upBoatSprites = Content.PLAYER2[7];
+		
+		animation.setFrames(downSprites);
+		animation.setDelay(10);
+		}
+		
 		
 	}
 	
@@ -81,10 +108,12 @@ public class Player extends Entity {
 	public int getTotalDiamonds() { return totalDiamonds; }
 	public void setTotalDiamonds(int i) { totalDiamonds = i; }
 	
-	public void gotBoat() { hasBoat = true; tileMap.replace(22, 4); }
+	public void gotWeapon() { hasWeapon = true; }
+	public void gotKey() { hasKey = true; }
 	public void gotAxe() { hasAxe = true; }
-	public boolean hasBoat() { return hasBoat; }
+	public boolean hasWeapon() { return hasWeapon; }
 	public boolean hasAxe() { return hasAxe; }
+	public boolean hasKey() { return hasKey; }
 	
 	// Used to update time.
 	public long getTicks() { return ticks; }
@@ -103,6 +132,14 @@ public class Player extends Entity {
 		super.setUp();
 	}
 	
+	public void changeHealth(int amount) {
+		actionCounter++;
+		if (actionCounter == 16){
+			setHealth(-1);
+			HealthControl.modifyHealth(-1);	
+			actionCounter = 0;
+		}
+	}
 	// Keyboard input.
 	// If Player has axe, dead trees in front
 	// of the Player will be chopped down.
@@ -134,6 +171,7 @@ public class Player extends Entity {
 		// check if on water
 		boolean current = onWater;
 		if(tileMap.getIndex(ydest / tileSize, xdest / tileSize) == 4) {
+			changeHealth(-1);
 			onWater = true;
 		}
 		else {
@@ -180,16 +218,10 @@ public class Player extends Entity {
 		
 		// update position
 		super.update();
-		
 	}
 	
 	// Draw Player.
 	public void draw(Graphics2D g) {
 		super.draw(g);
 	}
-
-    public int getHealth() {
-        return 0;
-    }
-	
 }

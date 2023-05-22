@@ -34,14 +34,9 @@ public class Round1 extends GameState {
 	// diamonds
 	private ArrayList<Diamond> diamonds;
 	
-	// items
-	private ArrayList<Item> items;
-	
 	// sparkles
 	private ArrayList<Sparkle> sparkles;
 
-	// monster
-	private ArrayList<Monster> monster;
 	
 	// camera position
 	private int xsector;
@@ -69,8 +64,6 @@ public class Round1 extends GameState {
 		// create lists
 		diamonds = new ArrayList<Diamond>();
 		sparkles = new ArrayList<Sparkle>();
-		//items = new ArrayList<Item>();
-		//monster = new ArrayList<Monster>();
 		
 		// load map
 		tileMap = new TileMap(16);
@@ -80,11 +73,9 @@ public class Round1 extends GameState {
 		// create player
 		player = new Player(tileMap);
 		
-		// fill lists
-		//populateMonster();
+		// fill lists - for round 1 only diamonds are populated
 		populateDiamonds();
-		//populateItems();
-		
+
 		// initialize player
 		player.setTilePosition(4, 4);
 		player.setTotalDiamonds(diamonds.size());
@@ -117,20 +108,6 @@ public class Round1 extends GameState {
 		eventStart();
 			
 	}
-	private void populateMonster(){
-
-		Monster m;
-		m = new Monster(tileMap);
-		m.setType(Monster.SMALL);
-		m.setTilePosition(11, 20);
-		monster.add(m);
-		
-		m = new Monster(tileMap);
-		m.setType(Monster.BOSS);
-		m.setTilePosition(11, 18);
-		monster.add(m);
-
-	}
 	
 	private void populateDiamonds() {
 		
@@ -155,23 +132,6 @@ public class Round1 extends GameState {
 		d = new Diamond(tileMap);
 		d.setTilePosition(13, 3);
 		diamonds.add(d);
-	}
-	
-	private void populateItems() {
-		
-		Item item;
-
-		item = new Item(tileMap);
-		item.setType(Item.AXE);
-		item.setTilePosition(3, 22);
-		items.add(item);
-		
-		
-		item = new Item(tileMap);
-		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
-		items.add(item);
-		
 	}
 	
 	public void update() {
@@ -249,27 +209,6 @@ public class Round1 extends GameState {
 				i--;
 			}
 		}
-		
-		/* update items
-		for(int i = 0; i < items.size(); i++) {
-			Item item = items.get(i);
-			if(player.intersects(item)) {
-				items.remove(i);
-				i--;
-				item.collected(player);
-				JukeBox.play("collect");
-				Sparkle s = new Sparkle(tileMap);
-				s.setPosition(item.getx(), item.gety());
-				sparkles.add(s);
-			}
-		}*/
-
-		/*update monster
-		for(int i = 0; i < monster.size(); i++) {
-			Monster m = monster.get(i);
-			m.update();
-		}*/
-		
 	}
 	
 	
@@ -291,16 +230,6 @@ public class Round1 extends GameState {
 			s.draw(g);
 		}
 		
-		/* draw items
-		for(Item i : items) {
-			i.draw(g);
-			i.setLeft();
-		}*/
-
-		/*draw Monster
-		for(Monster i : monster){
-			i.draw(g);
-		}*/
 		
 		// draw hud
 		hud.draw(g);
@@ -360,7 +289,7 @@ public class Round1 extends GameState {
 		eventTick++;
 		if(eventTick == 1) {
 			boxes.clear();
-			for(int i = 0; i < 9; i++) {
+			for(int i = 0; i < 12; i++) {
 				if(i % 2 == 0) boxes.add(new Rectangle(-128, i * 16, GamePanel.WIDTH, 16));
 				else boxes.add(new Rectangle(128, i * 16, GamePanel.WIDTH, 16));
 			}
@@ -379,6 +308,7 @@ public class Round1 extends GameState {
 			}
 		}
 		if(eventTick > 33) {
+			Data.setTime(player.getTicks());
 			gsm.setState(gsm.ROUND2);
 			/*if(!JukeBox.isPlaying("finish")) {
 				Data.setTime(player.getTicks());

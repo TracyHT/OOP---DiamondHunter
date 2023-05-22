@@ -15,7 +15,8 @@ public class Item extends Entity{
 	
 	private BufferedImage sprite;
 	private int type;
-	public static final int BOAT = 0;
+	public static final int KEY = 0;
+	public static final int WEAPON =2;
 	public static final int AXE = 1;
 	
 	public Item(TileMap tm) {
@@ -27,8 +28,11 @@ public class Item extends Entity{
 	
 	public void setType(int i) {
 		type = i;
-		if(type == BOAT) {
+		if (type == WEAPON){
 			sprite = Content.ITEMS[1][0];
+		}
+		if(type == KEY) {
+			sprite = Content.ITEMS[1][2];
 		}
 		else if(type == AXE) {
 			sprite = Content.ITEMS[1][1];
@@ -36,11 +40,14 @@ public class Item extends Entity{
 	}
 	
 	public void collected(Player p) {
-		if(type == BOAT) {
-			p.gotBoat();
+		if(type == WEAPON) {
+			p.gotWeapon();
 		}
 		if(type == AXE) {
 			p.gotAxe();
+		}
+		if (type == KEY) {
+			p.gotKey();
 		}
 	}
 	

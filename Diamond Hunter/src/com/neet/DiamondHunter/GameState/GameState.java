@@ -15,6 +15,9 @@ public abstract class GameState {
 
 	//action
 	protected int actionCounter = 0;
+
+	//mute
+	protected static boolean mute;
 	
 	public GameState(GameStateManager gsm) {
 		this.gsm = gsm;

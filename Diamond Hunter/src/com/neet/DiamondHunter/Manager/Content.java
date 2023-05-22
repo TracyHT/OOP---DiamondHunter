@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 public class Content {
 	
 	public static BufferedImage[][] MENUBG = load("/HUD/menuscreen.png", 160, 176);
-	public static BufferedImage[][] BAR = load("/HUD/bar.png", 128, 16);
+	public static BufferedImage[][] BAR = load("/HUD/bar.png", 160, 16);
 	public static BufferedImage[][] GUIDELINE = load("/HUD/guideline.png", 160, 176);
 	public static BufferedImage[][] GUIDELINETITLE = load("/HUD/guidelinetitle.png", 137, 17);
 	public static BufferedImage[][] CHOOSECHAR = load("/HUD/choosechar.png", 135, 27);
@@ -27,6 +27,7 @@ public class Content {
 	public static BufferedImage[][] BULLET = load("/Sprites/bullet.png", 13, 14);
 	public static BufferedImage[][] ITEMS = load("/Sprites/items.png", 16, 16);
 	public static BufferedImage[][] HEARTS = load("/Sprites/Heart.png", 16, 16);
+	public static BufferedImage[][] LIFEPOT = load("/Sprites/Lifepot.png", 9, 11);
 
 	public static BufferedImage[][] GAMEOVERWIN = load("/HUD/gameoverwin.png", 160, 176);
 	public static BufferedImage[][] GAMEOVERLOSE = load("/HUD/gameoverlose.png", 160, 176);

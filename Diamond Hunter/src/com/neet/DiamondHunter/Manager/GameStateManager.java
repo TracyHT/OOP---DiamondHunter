@@ -53,6 +53,9 @@ public class GameStateManager {
 		setState(INTRO);
 		
 	}
+	public int getState(){
+		return currentState;
+	}
 	
 	public void setState(int i) {
 		previousState = currentState;

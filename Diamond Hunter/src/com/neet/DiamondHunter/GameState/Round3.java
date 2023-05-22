@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Item;
+import com.neet.DiamondHunter.Entity.Lifepot;
 import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Entity.Sparkle;
 import com.neet.DiamondHunter.Entity.Monster;
@@ -52,6 +53,9 @@ public class Round3 extends GameState {
 	//boss
 	private ArrayList<Boss> boss;
 
+	//lifepot
+	private ArrayList<Lifepot> lifepots;
+
 	//counter
 	int timeCounter;
 
@@ -85,6 +89,7 @@ public class Round3 extends GameState {
 		monster = new ArrayList<Monster>();
 		boss = new ArrayList<Boss>();
 		bullets = new ArrayList<Bullet>();
+		lifepots = new ArrayList<Lifepot>();
 
 		// load map
 		tileMap = new TileMap(16);
@@ -99,6 +104,7 @@ public class Round3 extends GameState {
 		populateDiamonds();
 		populateItems();
 		populateBoss();
+		populateLifepot();
 		
 		// initialize player
 		player.setTilePosition(5, 4);
@@ -132,6 +138,28 @@ public class Round3 extends GameState {
 		eventStart();
 			
 	}
+	private void populateLifepot(){
+		Lifepot l;
+		l = new Lifepot(tileMap);
+		l.setTilePosition(6, 2);
+		lifepots.add(l);
+
+		l = new Lifepot(tileMap);
+		l.setTilePosition(23, 34);
+		lifepots.add(l);
+
+		l = new Lifepot(tileMap);
+		l.setTilePosition(29, 37);
+		lifepots.add(l);
+
+		l = new Lifepot(tileMap);
+		l.setTilePosition(34, 2);
+		lifepots.add(l);
+
+		l = new Lifepot(tileMap);
+		l.setTilePosition(26, 10);
+		lifepots.add(l);
+	}
 	private void populateMonster(){
 		Monster m;
 		m = new Monster(tileMap);
@@ -145,12 +173,24 @@ public class Round3 extends GameState {
 		m = new Monster(tileMap);
 		m.setTilePosition(12, 34);
 		monster.add(m);
+
+		m = new Monster(tileMap);
+		m.setTilePosition(29, 27);
+		monster.add(m);
+
+		m = new Monster(tileMap);
+		m.setTilePosition(11, 30);
+		monster.add(m);
+
+		m = new Monster(tileMap);
+		m.setTilePosition(21, 13);
+		monster.add(m);
 	}
 
 	private void populateBoss(){
 		Boss b;
 		b = new Boss(tileMap);
-		b.setTilePosition(32, 35);
+		b.setTilePosition(28, 32);
 		boss.add(b);
 	} 
 	
@@ -178,7 +218,7 @@ public class Round3 extends GameState {
 		
 		item = new Item(tileMap);
 		item.setType(Item.WEAPON);
-		item.setTilePosition(13, 15);
+		item.setTilePosition(16, 13);
 		items.add(item);
 		
 	}
@@ -218,18 +258,21 @@ public class Round3 extends GameState {
 		player.update();
 
 		//update boss
-		
 		Boss b = boss.get(0);
 		for(int j = 0; j < bullets.size(); j++)
 					if(b.intersects(bullets.get(j))) b.setHealth(-1);
+		b.update();
+		if(player.intersects(b)) {
+			// decrease health
+			player.changeHealth(-1);
+			// play health decreased sound
+			JukeBox.play("collect");				
+		}
 		
 		//update health
 		for(int i = 0; i < monster.size(); i++) {
-			
 			Monster m = monster.get(i);
 			m.update();
-			
-			// player collects diamond
 			if(player.intersects(m)) {
 				// decrease health
 				player.changeHealth(-1);
@@ -237,6 +280,33 @@ public class Round3 extends GameState {
 				JukeBox.play("collect");				
 			}
 		}
+
+		//update lifepot
+		for(int i = 0; i < lifepots.size(); i++) {
+			
+			Lifepot l = lifepots.get(i);
+			l.update();
+			
+			// player collects diamond
+			if(player.intersects(l) && (player.getHealth() < 3)) {
+				// remove from list
+				lifepots.remove(i);
+				i--;
+
+				// increment amount of collected diamonds
+				player.setHealth(1);
+				HealthControl.modifyHealth(1);
+				
+				// play collect sound
+				JukeBox.play("collect");
+				
+				// add new sparkle
+				Sparkle s = new Sparkle(tileMap);
+				s.setPosition(l.getx(), l.gety());
+				sparkles.add(s);
+			}
+		}
+
 		// update diamonds
 		for(int i = 0; i < diamonds.size(); i++) {
 			
@@ -327,9 +397,6 @@ public class Round3 extends GameState {
 		
 		// draw player
 		player.draw(g);
-
-		// draw hud
-		hud.draw(g);
 		
 		// draw diamonds
 		for(Diamond d : diamonds) {
@@ -357,8 +424,14 @@ public class Round3 extends GameState {
 			i.draw(g);
 		}
 
+		//draw boss
 		for(Boss i: boss){
 			i.draw(g);
+		}
+
+		//draw lifepot
+		for(Lifepot l: lifepots){
+			l.draw(g);
 		}
 		
 		// draw transition boxes
@@ -366,6 +439,9 @@ public class Round3 extends GameState {
 		for(int i = 0; i < boxes.size(); i++) {
 			g.fill(boxes.get(i));
 		}
+
+		// draw hud
+		hud.draw(g);
 		
 	}
 	

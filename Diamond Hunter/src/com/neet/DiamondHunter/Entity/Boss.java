@@ -18,8 +18,8 @@ public class Boss extends Entity {
 	public Boss(TileMap tm) {
 		
 		super(tm);
-		moveSpeed = 5;
-		health = 10;
+		moveSpeed = 3;
+		health = 15;
 		
         width = 40;
         height = 40;
@@ -46,21 +46,20 @@ public class Boss extends Entity {
 	public void move(int direction){
 		super.setPosition(super.getx() + direction, super.gety());
 	}
-	public int setAction() {
+	public void setAction() {
 		actionCounter++;
 
-		if (actionCounter == 120){
-			if (right){
-				setLeft();
-				return(-moveSpeed);
-			}
-			else if (left){
-				setRight();
-				return (moveSpeed);
-			}
+		if (actionCounter == 30){
+			Random random = new Random();
+			int i = random.nextInt(4);
+
+			if (i == 0) setUp();
+			else if (i == 1) setDown();
+			else if (i == 2) setLeft();
+			else if (i == 3) setRight();
+	
 			actionCounter = 0;
 		}
-		return 0;
 	}
 	public boolean shouldRemove() {
 		if (getHealth() <= 0) return true;

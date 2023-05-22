@@ -35,13 +35,13 @@ public class GameOverState extends GameState {
 		color = new Color(164, 198, 222);
 		ticks = Data.getTime();
 		if (ticks < 3600)
-			rank = 1;
-		else if (ticks < 5400)
-			rank = 2;
-		else if (ticks < 7200)
-			rank = 3;
-		else
 			rank = 4;
+		else if (ticks < 5400)
+			rank = 3;
+		else if (ticks < 7200)
+			rank = 2;
+		else
+			rank = 1;
 	}
 
 	public void update() {

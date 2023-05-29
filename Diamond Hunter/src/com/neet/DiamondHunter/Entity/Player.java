@@ -1,8 +1,17 @@
-// The only subclass the fully utilizes the
-// Entity superclass (no other class requires
-// movement in a tile based map).
-// Contains all the gameplay associated with
-// the Player.
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// The only subclass the fully utilizes the
+		// Entity superclass (no other class requires
+		// movement in a tile based map).
+		// Contains all the gameplay associated with
+		// the Player.
+**/
 
 package com.neet.DiamondHunter.Entity;
 

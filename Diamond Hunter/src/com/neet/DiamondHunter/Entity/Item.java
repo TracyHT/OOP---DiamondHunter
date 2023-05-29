@@ -1,8 +1,16 @@
-// Possibly redundant subclass of Entity.
-// There are two types of items: Axe and boat.
-// Upon collection, informs the Player
-// that the Player does indeed have the item.
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// Possibly redundant subclass of Entity.
+		// There are 3 types of items: Axe, key and weapon.
+		// Upon collection, informs the Player
+		// that the Player does indeed have the item.
+ */
 package com.neet.DiamondHunter.Entity;
 
 import java.awt.Graphics2D;

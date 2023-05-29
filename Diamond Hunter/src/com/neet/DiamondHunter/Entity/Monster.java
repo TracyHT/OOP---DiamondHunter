@@ -1,7 +1,15 @@
-// Diamond class.
-// May contain a list of tileChanges.
-// These tileChanges are used to modify
-// the tile map upon collection.
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// Monster class
+		// Control monster behavior
+		// Define when the monster should be removed
+ */
 
 package com.neet.DiamondHunter.Entity;
 

@@ -1,7 +1,15 @@
-// Global audio player class.
-// Call init() as soon as possible to instantiate
-// the clips HashMap.
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// Global audio player class.
+		// Call init() as soon as possible to instantiate
+		// the clips HashMap.
+ */
 package com.neet.DiamondHunter.Manager;
 
 import java.io.BufferedInputStream;

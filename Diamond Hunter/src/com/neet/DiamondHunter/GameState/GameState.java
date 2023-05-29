@@ -1,8 +1,16 @@
-// Blueprint for all GameState subclasses.
-// Has a reference to the GameStateManager
-// along with the four methods that must
-// be overridden.
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// Blueprint for all GameState subclasses.
+		// Has a reference to the GameStateManager
+		// along with the four methods that must
+		// be overridden.
+ */
 package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;

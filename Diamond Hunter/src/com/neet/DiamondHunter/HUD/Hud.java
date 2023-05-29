@@ -1,6 +1,15 @@
-// Contains a reference to the Player.
-// Draws all relevant information at the
-// bottom of the screen.
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// Contains a reference to the Player.
+		// Draws all relevant information at the
+		// bottom of the screen.
+ */
 
 package com.neet.DiamondHunter.HUD;
 

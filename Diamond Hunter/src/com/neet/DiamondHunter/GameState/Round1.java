@@ -1,7 +1,16 @@
-// The main playing GameState.
-// Contains everything you need for gameplay:
-// Player, TileMap, Diamonds, etc.
-// Updates and draws all game objects.
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// The main playing GameState no 1.
+		// Contains everything you need for gameplay:
+		// Player, TileMap, Diamonds, etc.
+		// Updates and draws all game objects.
+ */
 
 package com.neet.DiamondHunter.GameState;
 

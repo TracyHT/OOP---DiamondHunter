@@ -1,12 +1,22 @@
-// Contains an array of current key state
-// previous key state. A value of true
-// means the key is pressed.
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// Contains an array of current key state
+		// previous key state. A value of true
+		// means the key is pressed.
 
-// The GamePanel KeyListener will update the array.
-// All GameStates now have a handleInput() function
-// in order to keep all keyboard input operations
-// on the game thread rather than on the EDT to avoid
-// problems.
+		// The GamePanel KeyListener will update the array.
+		// All GameStates now have a handleInput() function
+		// in order to keep all keyboard input operations
+		// on the game thread rather than on the EDT to avoid
+		// problems.
+ */
+
 
 package com.neet.DiamondHunter.Manager;
 

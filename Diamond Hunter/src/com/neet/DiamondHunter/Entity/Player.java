@@ -25,20 +25,20 @@ public class Player extends Entity {
 	private BufferedImage[] leftSprites;
 	private BufferedImage[] rightSprites;
 	private BufferedImage[] upSprites;
-	private BufferedImage[] downBoatSprites;
-	private BufferedImage[] leftBoatSprites;
-	private BufferedImage[] rightBoatSprites;
-	private BufferedImage[] upBoatSprites;
+	private BufferedImage[] downLavaSprites;
+	private BufferedImage[] leftLavaSprites;
+	private BufferedImage[] rightLavaSprites;
+	private BufferedImage[] upLavaSprites;
 	
 	// animation
 	private final int DOWN = 0;
 	private final int LEFT = 1;
 	private final int RIGHT = 2;
 	private final int UP = 3;
-	private final int DOWNBOAT = 4;
-	private final int LEFTBOAT = 5;
-	private final int RIGHTBOAT = 6;
-	private final int UPBOAT = 7;
+	private final int DOWNLAVA = 4;
+	private final int LEFTLAVA = 5;
+	private final int RIGHTLAVA = 6;
+	private final int UPLAVA = 7;
 	
 	// gameplay
 	private int numDiamonds;
@@ -71,10 +71,10 @@ public class Player extends Entity {
 		leftSprites = Content.PLAYER1[1];
 		rightSprites = Content.PLAYER1[2];
 		upSprites = Content.PLAYER1[3];
-		downBoatSprites = Content.PLAYER1[4];
-		leftBoatSprites = Content.PLAYER1[5];
-		rightBoatSprites = Content.PLAYER1[6];
-		upBoatSprites = Content.PLAYER1[7];
+		downLavaSprites = Content.PLAYER1[4];
+		leftLavaSprites = Content.PLAYER1[5];
+		rightLavaSprites = Content.PLAYER1[6];
+		upLavaSprites = Content.PLAYER1[7];
 		
 		animation.setFrames(downSprites);
 		animation.setDelay(10);
@@ -86,10 +86,10 @@ public class Player extends Entity {
 		leftSprites = Content.PLAYER2[1];
 		rightSprites = Content.PLAYER2[2];
 		upSprites = Content.PLAYER2[3];
-		downBoatSprites = Content.PLAYER2[4];
-		leftBoatSprites = Content.PLAYER2[5];
-		rightBoatSprites = Content.PLAYER2[6];
-		upBoatSprites = Content.PLAYER2[7];
+		downLavaSprites = Content.PLAYER2[4];
+		leftLavaSprites = Content.PLAYER2[5];
+		rightLavaSprites = Content.PLAYER2[6];
+		upLavaSprites = Content.PLAYER2[7];
 		
 		animation.setFrames(downSprites);
 		animation.setDelay(10);
@@ -185,32 +185,32 @@ public class Player extends Entity {
 		
 		// set animation
 		if(down) {
-			if(onWater && currentAnimation != DOWNBOAT) {
-				setAnimation(DOWNBOAT, downBoatSprites, 10);
+			if(onWater && currentAnimation != DOWNLAVA) {
+				setAnimation(DOWNLAVA, downLavaSprites, 10);
 			}
 			else if(!onWater && currentAnimation != DOWN) {
 				setAnimation(DOWN, downSprites, 10);
 			}
 		}
 		if(left) {
-			if(onWater && currentAnimation != LEFTBOAT) {
-				setAnimation(LEFTBOAT, leftBoatSprites, 10);
+			if(onWater && currentAnimation != LEFTLAVA) {
+				setAnimation(LEFTLAVA, leftLavaSprites, 10);
 			}
 			else if(!onWater && currentAnimation != LEFT) {
 				setAnimation(LEFT, leftSprites, 10);
 			}
 		}
 		if(right) {
-			if(onWater && currentAnimation != RIGHTBOAT) {
-				setAnimation(RIGHTBOAT, rightBoatSprites, 10);
+			if(onWater && currentAnimation != RIGHTLAVA) {
+				setAnimation(RIGHTLAVA, rightLavaSprites, 10);
 			}
 			else if(!onWater && currentAnimation != RIGHT) {
 				setAnimation(RIGHT, rightSprites, 10);
 			}
 		}
 		if(up) {
-			if(onWater && currentAnimation != UPBOAT) {
-				setAnimation(UPBOAT, upBoatSprites, 10);
+			if(onWater && currentAnimation != UPLAVA) {
+				setAnimation(UPLAVA, upLavaSprites, 10);
 			}
 			else if(!onWater && currentAnimation != UP) {
 				setAnimation(UP, upSprites, 10);

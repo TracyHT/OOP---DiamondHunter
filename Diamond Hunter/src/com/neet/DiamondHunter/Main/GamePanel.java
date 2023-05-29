@@ -1,8 +1,16 @@
-// The GamePanel is the drawing canvas.
-// It contains the game loop which
-// keeps the game moving forward.
-// This class is also the one that grabs key events.
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// The GamePanel is the drawing canvas.
+		// It contains the game loop which
+		// keeps the game moving forward.
+		// This class is also the one that grabs key events.
+ */
 package com.neet.DiamondHunter.Main;
 
 import java.awt.Dimension;

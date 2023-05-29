@@ -1,7 +1,15 @@
-// The tile map class contains a loaded tile set
-// and a 2d array of the map.
-// Each index in the map corresponds to a specific tile.
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// The tile map class contains a loaded tile set
+		// and a 2d array of the map.
+		// Each index in the map corresponds to a specific tile.
+ */
 package com.neet.DiamondHunter.TileMap;
 
 import java.awt.Graphics2D;

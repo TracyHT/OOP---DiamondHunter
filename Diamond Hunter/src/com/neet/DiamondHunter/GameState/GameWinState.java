@@ -1,12 +1,15 @@
-// Congratulations for finishing the game.
-// Gives you a rank based on how long it took
-// you to beat the game.
-
-// Under two minutes = Speed Demon
-// Under three minutes = Adventurer
-// Under four minutes = Beginner
-// Four minutes or greater = Bumbling Idiot
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// Congratulations for finishing the game.
+		// Gives you a rank based on how long it took
+		// you to beat the game.
+ */
 package com.neet.DiamondHunter.GameState;
 
 import java.awt.Color;

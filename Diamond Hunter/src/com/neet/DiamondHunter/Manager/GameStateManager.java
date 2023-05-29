@@ -1,9 +1,17 @@
-// The GameStateManager does exactly what its
-// name says. It contains a list of GameStates.
-// It decides which GameState to update() and
-// draw() and handles switching between different
-// GameStates.
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// The GameStateManager does exactly what its
+		// name says. It contains a list of GameStates.
+		// It decides which GameState to update() and
+		// draw() and handles switching between different
+		// GameStates.
+ */
 package com.neet.DiamondHunter.Manager;
 
 import java.awt.Graphics2D;

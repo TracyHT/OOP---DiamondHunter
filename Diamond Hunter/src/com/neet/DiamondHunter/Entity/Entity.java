@@ -1,7 +1,15 @@
-// The game object superclass.
-// This class has all the logic required
-// to move around a tile based map.
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// The game object superclass.
+		// This class has all the logic required
+		// to move around a tile based map.
+ */
 package com.neet.DiamondHunter.Entity;
 
 import java.awt.Graphics2D;

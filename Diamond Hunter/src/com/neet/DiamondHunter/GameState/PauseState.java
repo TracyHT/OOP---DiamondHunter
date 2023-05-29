@@ -1,6 +1,14 @@
-// The pause GameState can only be activated
-// by calling GameStateManager#setPaused(true).
-
+/**
+ * Name: Group 08
+   Member:
+   1: Ngô Lê Thiên Ân ITITDK21030
+   2: Nguyễn Đình Thắng ITITIU21309
+   3: Huỳnh Thanh Thủy ITITIU21325
+   4: Cao Hoàng Khôi Nguyên ITITDK21048
+   Purpose:
+		// The pause GameState can only be activated
+		// by calling GameStateManager#setPaused(true).
+ */
 package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
